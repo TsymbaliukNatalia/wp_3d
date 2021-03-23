@@ -109,49 +109,40 @@
                     <div class="arrow-left arrow-left-event"></div>
                     <div class="arrow-right arrow-right-event"></div>
                 </div>
+                <?php 
+                        $posts = get_posts( array(
+                            'numberposts' => 20,
+                            'category'    => 0,
+                            'orderby'     => 'date',
+                            'order'       => 'DESC',
+                            'include'     => array(),
+                            'exclude'     => array(),
+                            'meta_key'    => '',
+                            'meta_value'  =>'',
+                            'post_type'   => 'events',
+                            'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+                        ) );        
+                ?>
+                
                 <div class="events-line">
+                    <?php foreach( $posts as $post ){
+                            setup_postdata($post); ?>
                     <figure class="event">
                         <div class="event-info">
-                            <address>San-Francisco </address><time>Feb 01</time>
-                        </div><img src="img/event.jpg" alt="Event" />
+                            <address><?php the_field('venue', $post->ID); ?></address><time><?php the_field('date_event', $post->ID); ?></time>
+                        </div>
+                        <?php $event_poster = get_field('event_poster', $post->ID); ?>
+                        <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $post->ID); ?>" />
                         <figcaption>
-                            <h3>NAME OF EVENT</h3>
-                            <p class="event-subtitle">INFO ABOUT EVENT. This is Photoshop's version of Lorem Ipsum.
-                                Proin gravida nibh vel</p><a class="button transparent-button event-button" href="event.html">Read more </a>
+                            <h3><?php the_field('name_of_event', $post->ID); ?></h3>
+                            <p class="event-subtitle"><?php the_field('info_about_event', $post->ID); ?></p><a class="button transparent-button event-button" href="event.html">Read more </a>
                         </figcaption>
                     </figure>
-                    <figure class="event">
-                        <div class="event-info">
-                            <address>San-Francisco </address><time>Feb 02</time>
-                        </div><img src="img/event.jpg" alt="Event" />
-                        <figcaption>
-                            <h3>NAME OF EVENT</h3>
-                            <p class="event-subtitle">INFO ABOUT EVENT. This is Photoshop's version of Lorem Ipsum.
-                                Proin gravida nibh vel </p><a class="button transparent-button event-button" href="event.html">Read more</a>
-                        </figcaption>
-                    </figure>
-                    <figure class="event">
-                        <div class="event-info">
-                            <address>San-Francisco </address><time>Feb 03</time>
-                        </div><img src="img/event.jpg" alt="Event" />
-                        <figcaption>
-                            <h3>NAME OF EVENT</h3>
-                            <p class="event-subtitle">INFO ABOUT EVENT. This is Photoshop's version of Lorem Ipsum.
-                                Proin gravida nibh vel</p><a class="button transparent-button event-button" href="event.html">Read more </a>
-                        </figcaption>
-                    </figure>
-                    <figure class="event">
-                        <div class="event-info">
-                            <address>San-Francisco </address><time>Feb 04</time>
-                        </div><img src="img/event.jpg" alt="Event" />
-                        <figcaption>
-                            <h3>NAME OF EVENT</h3>
-                            <p class="event-subtitle">INFO ABOUT EVENT. This is Photoshop's version of Lorem Ipsum.
-                                Proin gravida nibh vel</p><a class="button transparent-button event-button" href="event.html">Read more </a>
-                        </figcaption>
-                    </figure>
+                    <?php wp_reset_postdata();
+                            } ?>
                 </div>
             </section>
+                   
             <section class="video">
                 <h2 class="title-mb"><?php the_field('video_section_title', '11') ?></h2>
                 <div class="video-bg">
