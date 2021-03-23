@@ -15,19 +15,12 @@
         <div class="wrapper">
             <div class="adaptive-header-line">
                 <div class="header-line">
-                    <div class="logo"><a href="index.html"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" alt="Musikkbryggeriet3d logo" /></a>
+                    <div class="logo"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" alt="Musikkbryggeriet3d logo" />
                     </div>
                     <nav class="header-menu">
-                        <ul>
-                            <li><a href="index.html">Hjem</a></li>
-                            <li><a href="contact.html">Om oss</a></li>
-                            <li><a href="#">Fellesskap</a></li>
-                            <li><a href="#">Booking</a></li>
-                            <li><a href="event.html">Eventer</a></li>
-                            <li><a href="#">Samarbeid</a></li>
-                            <li><a href="shop.html">Shop</a></li>
-                            <li><a href="#">Kontakt oss</a></li>
-                        </ul>
+                        <?php wp_nav_menu([
+                            'theme_location'  => 'primary',
+                        ]); ?>
                     </nav>
                     <div class="right-part">
                         <div class="profile">

@@ -2,6 +2,8 @@
 
 add_action('wp_enqueue_scripts', 'my_wp_head_css' );
 add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
+add_action( 'init', 'register_post_types' );
+add_action( 'after_setup_theme', 'theme_register_nav_menu' );
 
 function my_wp_head_css() {
 
@@ -17,8 +19,9 @@ function my_scripts_method(){
     
 }
 
-add_action( 'init', 'register_post_types' );
+
 function register_post_types(){
+	
 	register_post_type( 'events', [
 		'label'  => null,
 		'labels' => [
@@ -47,4 +50,9 @@ function register_post_types(){
 		'rewrite'             => true,
 		'query_var'           => true,
 	] );
+}
+
+
+function theme_register_nav_menu() {
+	register_nav_menu( 'primary', 'Primary Menu' );
 }
