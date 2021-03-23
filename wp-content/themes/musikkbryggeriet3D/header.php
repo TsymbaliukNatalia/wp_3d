@@ -15,7 +15,7 @@
         <div class="wrapper">
             <div class="adaptive-header-line">
                 <div class="header-line">
-                    <div class="logo"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" alt="Musikkbryggeriet3d logo" />
+                    <div class="logo"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" alt="Musikkbryggeriet3d logo" /></a>
                     </div>
                     <nav class="header-menu">
                         <?php wp_nav_menu([
@@ -33,28 +33,4 @@
                     </div>
                 </div>
             </div>
-            <section class="header-content">
-                <div class="header-about">
-                    <div class="header-text-wrap">
-                        <h1><?php the_field('main_text', '11') ?></h1>
-                        <p class="header-subtitle"><?php the_field('smaller_main_text', '11') ?></p>
-                    </div><a class="button" href="#"><?php the_field('first_screen_button_text', '11') ?></a>
-                </div>
-                <div class="header-slider">
-                    <div class="photos">
-                        <?php
-                        $images = get_field('first_screen_slider', '11');
-                        if ($images) : ?>
-                            <?php foreach ($images as $image_id) : ?>
-                                <img class="header-slider-img" src="<?php echo $image_id['full_image_url'] ?>" alt="<?php echo $image_id['title'] ?>" />
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </div>
-                    <div class="slider-arrows">
-                        <div class="arrow-left"></div>
-                        <div class="arrow-right"></div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </header>
+           

@@ -1,5 +1,31 @@
 <?php get_header(); ?>
 
+<section class="header-content">
+    <div class="header-about">
+        <div class="header-text-wrap">
+            <h1><?php the_field('main_text', '11') ?></h1>
+            <p class="header-subtitle"><?php the_field('smaller_main_text', '11') ?></p>
+        </div><a class="button" href="#"><?php the_field('first_screen_button_text', '11') ?></a>
+    </div>
+    <div class="header-slider">
+        <div class="photos">
+            <?php
+            $images = get_field('first_screen_slider', '11');
+            if ($images) : ?>
+                <?php foreach ($images as $image_id) : ?>
+                    <img class="header-slider-img" src="<?php echo $image_id['full_image_url'] ?>" alt="<?php echo $image_id['title'] ?>" />
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+        <div class="slider-arrows">
+            <div class="arrow-left"></div>
+            <div class="arrow-right"></div>
+        </div>
+    </div>
+</section>
+</div>
+</header>
+
 <main>
     <div class="popup-bg">
         <form class="popup sing-up" action="index.php"><span class="close"> </span>
@@ -109,40 +135,40 @@
                     <div class="arrow-left arrow-left-event"></div>
                     <div class="arrow-right arrow-right-event"></div>
                 </div>
-                <?php 
-                        $posts = get_posts( array(
-                            'numberposts' => 20,
-                            'category'    => 0,
-                            'orderby'     => 'date',
-                            'order'       => 'DESC',
-                            'include'     => array(),
-                            'exclude'     => array(),
-                            'meta_key'    => '',
-                            'meta_value'  =>'',
-                            'post_type'   => 'events',
-                            'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-                        ) );        
+                <?php
+                $posts = get_posts(array(
+                    'numberposts' => 20,
+                    'category'    => 0,
+                    'orderby'     => 'date',
+                    'order'       => 'DESC',
+                    'include'     => array(),
+                    'exclude'     => array(),
+                    'meta_key'    => '',
+                    'meta_value'  => '',
+                    'post_type'   => 'events',
+                    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+                ));
                 ?>
-                
+
                 <div class="events-line">
-                    <?php foreach( $posts as $post ){
-                            setup_postdata($post); ?>
-                    <figure class="event">
-                        <div class="event-info">
-                            <address><?php the_field('venue', $post->ID); ?></address><time><?php the_field('date_event', $post->ID); ?></time>
-                        </div>
-                        <?php $event_poster = get_field('event_poster', $post->ID); ?>
-                        <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $post->ID); ?>" />
-                        <figcaption>
-                            <h3><?php the_field('name_of_event', $post->ID); ?></h3>
-                            <p class="event-subtitle"><?php the_field('info_about_event', $post->ID); ?></p><a class="button transparent-button event-button" href="event.html">Read more </a>
-                        </figcaption>
-                    </figure>
+                    <?php foreach ($posts as $post) {
+                        setup_postdata($post); ?>
+                        <figure class="event">
+                            <div class="event-info">
+                                <address><?php the_field('venue', $post->ID); ?></address><time><?php the_field('date_event', $post->ID); ?></time>
+                            </div>
+                            <?php $event_poster = get_field('event_poster', $post->ID); ?>
+                            <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $post->ID); ?>" />
+                            <figcaption>
+                                <h3><?php the_field('name_of_event', $post->ID); ?></h3>
+                                <p class="event-subtitle"><?php the_field('info_about_event', $post->ID); ?></p><a class="button transparent-button event-button" href="event.html">Read more </a>
+                            </figcaption>
+                        </figure>
                     <?php wp_reset_postdata();
-                            } ?>
+                    } ?>
                 </div>
             </section>
-                   
+
             <section class="video">
                 <h2 class="title-mb"><?php the_field('video_section_title', '11') ?></h2>
                 <div class="video-bg">
@@ -227,25 +253,25 @@
                 <div class="button-line"> <a class="button transparent-button" href="#">View more</a></div>
             </section>
             <div class="services-line">
-                <?php $first_preference = get_field('first_preference', '11');?>
+                <?php $first_preference = get_field('first_preference', '11'); ?>
                 <div class="service service-3d-printer"><img src="<?php echo $first_preference['image_for_the_first_preference']['url'] ?>" alt="<?php echo $first_preference['the_name_of_the_first_preference'] ?>" />
                     <p><?php echo $first_preference['the_name_of_the_first_preference'] ?></p>
                 </div>
-                <?php $second_preference = get_field('second_preference', '11');?>
+                <?php $second_preference = get_field('second_preference', '11'); ?>
                 <div class="service service-3d-printer"><img src="<?php echo $second_preference['image_for_the_second_preference']['url'] ?>" alt="<?php echo $second_preference['the_name_of_the_second_preference'] ?>" />
                     <p><?php echo $second_preference['the_name_of_the_second_preference'] ?></p>
                 </div>
-                <?php $third_preference = get_field('third_preference', '11');?>
+                <?php $third_preference = get_field('third_preference', '11'); ?>
                 <div class="service service-3d-printer"><img src="<?php echo $third_preference['image_for_the_third_preference']['url'] ?>" alt="<?php echo $third_preference['the_name_of_the_third_preference'] ?>" />
                     <p><?php echo $third_preference['the_name_of_the_third_preference'] ?></p>
                 </div>
-                <?php $fourth_preference = get_field('fourth_preference', '11');?>
+                <?php $fourth_preference = get_field('fourth_preference', '11'); ?>
                 <div class="service service-3d-printer"><img src="<?php echo $fourth_preference['image_for_the_fourth_preference']['url'] ?>" alt="<?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?>" />
-                    <p><?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?></p> 
+                    <p><?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?></p>
                 </div>
-                <?php $fifth_preference = get_field('fifth_preference', '11');?>
+                <?php $fifth_preference = get_field('fifth_preference', '11'); ?>
                 <div class="service service-3d-printer"><img src="<?php echo $fifth_preference['image_for_the_fifth_preference']['url'] ?>" alt="<?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?>" />
-                    <p><?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?></p>  
+                    <p><?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?></p>
                 </div>
             </div>
         </div>
