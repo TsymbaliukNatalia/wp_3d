@@ -75,62 +75,59 @@
             <p class="input-line"> <input class="button" id="send-password" type="submit" value="SEND PASSWORD" /><label for="send-password"></label></p>
         </form>
         <div class="popup grey-popup printer-popup"><span class="close"> </span>
-            <p class="popup-title printer-popup-title">3D Printer</p>
+            <?php $first_preference = get_field('first_preference', '11');?>
+            <p class="popup-title printer-popup-title"><?php echo $first_preference['the_name_of_the_first_preference'] ?></p>
             <div class="grey-popup-content">
-                <div class="popup-images"><img src="img/3d_printer_popup.jpg" alt="3D printer" /><img src="img/3d_printer_popup.jpg" alt="3D printer" /><img src="img/3d_printer_popup.jpg" alt="3D printer" /><img src="img/3d_printer_popup.jpg" alt="3D printer" /></div>
+                <div class="popup-images">
+                    <?php if(isset($first_preference['more_pictures_for_preference'])){
+                        foreach($first_preference['more_pictures_for_preference'] as $photo){ ?>
+                            <img src="<?php echo $photo["url"];?>" alt="<?php echo $photo["title"];?>" />
+                    <?php  } };?>
+                </div>
                 <div class="popup-text">
-                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                        Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-                        nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan
-                        ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat
-                        consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia.
-                    </p>
-                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                        Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-                        nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan
-                        ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat
-                        consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia.
-                    </p>
-                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                        Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-                        nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan
-                        ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat
-                        consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia.
-                    </p>
-                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                        Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-                        nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan
-                        ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat
-                        consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia.
-                    </p>
-                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                        Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-                        nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan
-                        ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat
-                        consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia.
-                    </p>
+                    <?php echo $first_preference['description_of_the_first_preference'];?> 
                 </div>
             </div>
         </div>
+        <?php $second_preference = get_field('second_preference', '11'); ?>
         <div class="popup grey-popup service-popup sittig-popup"><span class="close"> </span>
-            <div><img src="img/chair.svg" alt="Free sitting" /></div>
-            <p class="service-popup-title">Free sitting</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab, sint.</p>
+            <div>
+            <?php if(isset($second_preference['image_for_the_second_preference'])){ ?>
+                <img src="<?php echo $second_preference['image_for_the_second_preference']['url'] ?>" alt="<?php echo $second_preference['the_name_of_the_second_preference'] ?>" />
+            <?php }; ?>
+            </div>
+            <p class="service-popup-title"><?php echo $second_preference['the_name_of_the_second_preference'] ?></p>
+            <p><?php echo $second_preference['brief_description_of_the_second_preference'] ?></p>
         </div>
+        <?php $third_preference = get_field('third_preference', '11'); ?>
         <div class="popup grey-popup service-popup wifi-popup"><span class="close"> </span>
-            <div><img src="img/wifi.svg" alt="Free wifi" /></div>
-            <p class="service-popup-title">Free wifi</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab, sint.</p>
+            <div>
+            <?php if(isset($third_preference['image_for_the_third_preference'])){ ?>
+                <img src="<?php echo $third_preference['image_for_the_third_preference']['url'] ?>" alt="<?php echo $third_preference['the_name_of_the_third_preference'] ?>" />
+            <?php }; ?>
+            </div>
+            <p class="service-popup-title"><?php echo $third_preference['the_name_of_the_third_preference'] ?></p>
+            <p><?php echo $third_preference['brief_description_of_the_third_preference'] ?></p>
         </div>
+        <?php $fourth_preference = get_field('fourth_preference', '11'); ?>
         <div class="popup grey-popup service-popup print-popup"><span class="close"> </span>
-            <div><img src="img/printer.svg" alt="Printer" /></div>
-            <p class="service-popup-title">Printer</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab, sint.</p>
+            <div>
+            <?php if(isset($fourth_preference['image_for_the_fourth_preference'])){ ?>
+                <img src="<?php echo $fourth_preference['image_for_the_fourth_preference']['url'] ?>" alt="<?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?>" />
+            <?php }; ?>
+            </div>
+            <p class="service-popup-title"><?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?></p>
+            <p><?php echo $fourth_preference['brief_description_of_the_fourth_preference'] ?></p>
         </div>
+        <?php $fifth_preference = get_field('fifth_preference', '11'); ?>
         <div class="popup grey-popup service-popup microwave-popup"><span class="close"> </span>
-            <div><img src="img/microwave.svg" alt="Microwave" /></div>
-            <p class="service-popup-title">Microwave</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab, sint.</p>
+            <div>
+            <?php if(isset($fifth_preference['image_for_the_fifth_preference'])){ ?>
+                <img src="<?php echo $fifth_preference['image_for_the_fifth_preference']['url'] ?>" alt="<?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?>" />
+            <?php }; ?>
+            </div>
+            <p class="service-popup-title"><?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?></p>
+            <p><?php echo $fifth_preference['brief_description_of_the_fifth_preference'] ?></p>
         </div>
         <div class="popup grey-popup basket-popup"><span class="close"> </span><b class="your-order">Your order</b>
             <div class="basket-products">
@@ -281,19 +278,19 @@
                     <p><?php echo $first_preference['the_name_of_the_first_preference'] ?></p>
                 </div>
                 <?php $second_preference = get_field('second_preference', '11'); ?>
-                <div class="service service-3d-printer"><img src="<?php echo $second_preference['image_for_the_second_preference']['url'] ?>" alt="<?php echo $second_preference['the_name_of_the_second_preference'] ?>" />
+                <div class="service service-sitting"><img src="<?php echo $second_preference['image_for_the_second_preference']['url'] ?>" alt="<?php echo $second_preference['the_name_of_the_second_preference'] ?>" />
                     <p><?php echo $second_preference['the_name_of_the_second_preference'] ?></p>
                 </div>
                 <?php $third_preference = get_field('third_preference', '11'); ?>
-                <div class="service service-3d-printer"><img src="<?php echo $third_preference['image_for_the_third_preference']['url'] ?>" alt="<?php echo $third_preference['the_name_of_the_third_preference'] ?>" />
+                <div class="service service-wifi"><img src="<?php echo $third_preference['image_for_the_third_preference']['url'] ?>" alt="<?php echo $third_preference['the_name_of_the_third_preference'] ?>" />
                     <p><?php echo $third_preference['the_name_of_the_third_preference'] ?></p>
                 </div>
                 <?php $fourth_preference = get_field('fourth_preference', '11'); ?>
-                <div class="service service-3d-printer"><img src="<?php echo $fourth_preference['image_for_the_fourth_preference']['url'] ?>" alt="<?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?>" />
+                <div class="service service-print"><img src="<?php echo $fourth_preference['image_for_the_fourth_preference']['url'] ?>" alt="<?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?>" />
                     <p><?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?></p>
                 </div>
                 <?php $fifth_preference = get_field('fifth_preference', '11'); ?>
-                <div class="service service-3d-printer"><img src="<?php echo $fifth_preference['image_for_the_fifth_preference']['url'] ?>" alt="<?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?>" />
+                <div class="service service-microwave"><img src="<?php echo $fifth_preference['image_for_the_fifth_preference']['url'] ?>" alt="<?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?>" />
                     <p><?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?></p>
                 </div>
             </div>
