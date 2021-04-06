@@ -83,11 +83,15 @@ Template Name: Om oss
         <hr class="primary-line" />
         <div class="wrapper">
             <section class="contact">
-                <h2>KONTAKT OSS</h2>
+                <h2><?php the_field('headline_for_contact_block') ?></h2>
+                <?php
+                $tel = get_field('contact_phone');
+                $contact_phone = preg_replace("/[^,.0-9]/", '', $tel);
+                ?>
                 <div class="flex-wrap">
-                    <div class="contact-information"> <strong><a class="info-tel" href="tel:+38xxxxxxxxxx">+38(XXX)XXXXXXX</a></strong><strong>
-                            <address class="info-address">Storgata 15A, Oslo</address>
-                        </strong><strong><a class="info-mail" href="mailto:yourmail@gmail.com">yourmail@gmail.com</a></strong></div>
+                    <div class="contact-information"> <strong><a class="info-tel" href="tel:+<?php echo $contact_phone; ?>"><?php the_field('contact_phone') ?></a></strong><strong>
+                            <address class="info-address"><?php the_field('contact_adress') ?></address>
+                        </strong><strong><a class="info-mail" href="mailto:<?php the_field('contact_e-mail') ?>"><?php the_field('contact_e-mail') ?></a></strong></div>
                     <div class="map"><iframe src="https://www.google.com/maps/d/u/0/embed?mid=1fzyQDJk9dlUwyrcroYMC9DjzSY7vH8tn"></iframe>
                     </div>
                 </div>
@@ -95,8 +99,8 @@ Template Name: Om oss
         </div>
     </main>
     <footer>
-        <div class="social-line"><a class="soc-inst" href="#"></a><a class="soc-fb" href="#"></a><a class="soc-tw" href="#"></a><a class="soc-yt" href="#"></a></div>
-        <p class="copy">Copyricht © 2020 All rights reserved</p>
+        <div class="social-line"><a class="soc-inst" href="<?php the_field('instagram') ?>"></a><a class="soc-fb" href="<?php the_field('facebook') ?>"></a><a class="soc-tw" href="<?php the_field('twitter') ?>"></a><a class="soc-yt" href="<?php the_field('youtube') ?>"></a></div>
+        <p class="copy"><?php the_field('footer_text', '11') ?></p>
     </footer>
 </div>
 <?php get_footer(); ?>
