@@ -80,6 +80,34 @@ function register_post_types(){
 		'rewrite'             => true,
 		'query_var'           => true,
 	] );
+	register_post_type( 'photo_gallery', [
+		'label'  => null,
+		'labels' => [
+			'name'               => 'Photo gallery', // основное название для типа записи
+			'singular_name'      => 'photo in photo gallery', // название для одной записи этого типа
+			'add_new'            => 'Add new photo', // для добавления новой записи
+			'add_new_item'       => 'Add new photo', // заголовка у вновь создаваемой записи в админ-панели.
+			'edit_item'          => 'Edit photo', // для редактирования типа записи
+			'new_item'           => 'New photo', // текст новой записи
+			'view_item'          => 'View photo', // для просмотра записи этого типа.
+			'search_items'       => 'Search photo', // для поиска по этим типам записи
+			'not_found'          => 'Not found', // если в результате поиска ничего не было найдено
+			'parent_item_colon'  => '', 
+		],
+		'description'         => '',
+		'public'              => true,
+		'show_in_menu'        => true, 
+		'show_in_rest'        => null, 
+		'rest_base'           => null, 
+		'menu_position'       => null,
+		'menu_icon'           => null,
+		'hierarchical'        => false,
+		'supports'            => [ 'title', 'editor', 'custom-fields'],
+		'taxonomies'          => [],
+		'has_archive'         => false,
+		'rewrite'             => true,
+		'query_var'           => true,
+	] );
 }
 
 

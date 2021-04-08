@@ -26,7 +26,7 @@
         <section class="header-content">
             <div class="header-about">
                 <div class="header-text-wrap">
-                    <h1><?php the_field('main_text', '11') ?></h1>
+                    <h1><?php the_field('main_text') ?></h1>
                     <p class="header-subtitle"><?php the_field('smaller_main_text', '11') ?></p>
                 </div><a class="button" href="#"><?php the_field('first_screen_button_text', '11') ?></a>
             </div>
@@ -50,29 +50,31 @@
 </header>
 
 <main>
-<?php include_once ('register-template.php'); ?>
+    
     <div class="popup-bg">
+    <?php include_once('register-template.php'); ?>
         <div class="popup grey-popup printer-popup"><span class="close"> </span>
-            <?php $first_preference = get_field('first_preference', '11');?>
+            <?php $first_preference = get_field('first_preference', '11'); ?>
             <p class="popup-title printer-popup-title"><?php echo $first_preference['the_name_of_the_first_preference'] ?></p>
             <div class="grey-popup-content">
                 <div class="popup-images">
-                    <?php if(isset($first_preference['more_pictures_for_preference'])){
-                        foreach($first_preference['more_pictures_for_preference'] as $photo){ ?>
-                            <img src="<?php echo $photo["url"];?>" alt="<?php echo $photo["title"];?>" />
-                    <?php  } };?>
+                    <?php if (isset($first_preference['more_pictures_for_preference'])) {
+                        foreach ($first_preference['more_pictures_for_preference'] as $photo) { ?>
+                            <img src="<?php echo $photo["url"]; ?>" alt="<?php echo $photo["title"]; ?>" />
+                    <?php  }
+                    }; ?>
                 </div>
                 <div class="popup-text">
-                    <?php echo $first_preference['description_of_the_first_preference'];?> 
+                    <?php echo $first_preference['description_of_the_first_preference']; ?>
                 </div>
             </div>
         </div>
         <?php $second_preference = get_field('second_preference', '11'); ?>
         <div class="popup grey-popup service-popup sittig-popup"><span class="close"> </span>
             <div>
-            <?php if(isset($second_preference['image_for_the_second_preference'])){ ?>
-                <img src="<?php echo $second_preference['image_for_the_second_preference']['url'] ?>" alt="<?php echo $second_preference['the_name_of_the_second_preference'] ?>" />
-            <?php }; ?>
+                <?php if (isset($second_preference['image_for_the_second_preference'])) { ?>
+                    <img src="<?php echo $second_preference['image_for_the_second_preference']['url'] ?>" alt="<?php echo $second_preference['the_name_of_the_second_preference'] ?>" />
+                <?php }; ?>
             </div>
             <p class="service-popup-title"><?php echo $second_preference['the_name_of_the_second_preference'] ?></p>
             <p><?php echo $second_preference['brief_description_of_the_second_preference'] ?></p>
@@ -80,9 +82,9 @@
         <?php $third_preference = get_field('third_preference', '11'); ?>
         <div class="popup grey-popup service-popup wifi-popup"><span class="close"> </span>
             <div>
-            <?php if(isset($third_preference['image_for_the_third_preference'])){ ?>
-                <img src="<?php echo $third_preference['image_for_the_third_preference']['url'] ?>" alt="<?php echo $third_preference['the_name_of_the_third_preference'] ?>" />
-            <?php }; ?>
+                <?php if (isset($third_preference['image_for_the_third_preference'])) { ?>
+                    <img src="<?php echo $third_preference['image_for_the_third_preference']['url'] ?>" alt="<?php echo $third_preference['the_name_of_the_third_preference'] ?>" />
+                <?php }; ?>
             </div>
             <p class="service-popup-title"><?php echo $third_preference['the_name_of_the_third_preference'] ?></p>
             <p><?php echo $third_preference['brief_description_of_the_third_preference'] ?></p>
@@ -90,9 +92,9 @@
         <?php $fourth_preference = get_field('fourth_preference', '11'); ?>
         <div class="popup grey-popup service-popup print-popup"><span class="close"> </span>
             <div>
-            <?php if(isset($fourth_preference['image_for_the_fourth_preference'])){ ?>
-                <img src="<?php echo $fourth_preference['image_for_the_fourth_preference']['url'] ?>" alt="<?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?>" />
-            <?php }; ?>
+                <?php if (isset($fourth_preference['image_for_the_fourth_preference'])) { ?>
+                    <img src="<?php echo $fourth_preference['image_for_the_fourth_preference']['url'] ?>" alt="<?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?>" />
+                <?php }; ?>
             </div>
             <p class="service-popup-title"><?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?></p>
             <p><?php echo $fourth_preference['brief_description_of_the_fourth_preference'] ?></p>
@@ -100,25 +102,30 @@
         <?php $fifth_preference = get_field('fifth_preference', '11'); ?>
         <div class="popup grey-popup service-popup microwave-popup"><span class="close"> </span>
             <div>
-            <?php if(isset($fifth_preference['image_for_the_fifth_preference'])){ ?>
-                <img src="<?php echo $fifth_preference['image_for_the_fifth_preference']['url'] ?>" alt="<?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?>" />
-            <?php }; ?>
+                <?php if (isset($fifth_preference['image_for_the_fifth_preference'])) { ?>
+                    <img src="<?php echo $fifth_preference['image_for_the_fifth_preference']['url'] ?>" alt="<?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?>" />
+                <?php }; ?>
             </div>
             <p class="service-popup-title"><?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?></p>
             <p><?php echo $fifth_preference['brief_description_of_the_fifth_preference'] ?></p>
         </div>
         <div class="popup grey-popup basket-popup"><span class="close"> </span><b class="your-order">Your order</b>
-            <div class="basket-products">
-                <p class="basket-clear">Basket is clear</p>
-            </div>
-            <form class="order-registration">
-                <p class="all-price">To pay <span class="sum-price">0$</span></p>
-                <p class="mini-inputs input-line"><label for="pr-first-name"><input id="pr-first-name" type="text" name="pr-first-name" placeholder="First name" /></label><label for="pr-last-name"><input id="pr-last-name" type="text" name="pr-last-name" placeholder="Last name" /></label></p>
-                <p class="input-line"> <label for="pr-email"><input id="pr-email" type="email" name="pr-email" placeholder="E-mail" /></label></p>
-                <p class="input-line"><label for="pr-tel"><input id="pr-tel" type="tel" name="pr-tel" placeholder="Phone number" /></label></p>
-                <p class="input-line"><label for="pr-city"><input id="pr-city" type="text" name="city" placeholder="City"></label></p>
-                <label class="pr-submit" for="pr-submit"><input type="submit" value="Confirm the order" /></label>
-            </form>
+                <div class="basket-products">
+                    <p class="basket-clear">Basket is clear</p>
+                </div>
+                <form class="order-registration">
+                    <p class="all-price">To pay <span class="sum-price">0$</span></p>
+                    <p class="mini-inputs input-line"><label for="pr-first-name"><input id="pr-first-name" type="text"
+                                name="pr-first-name" placeholder="First name" /></label><label for="pr-last-name"><input
+                                id="pr-last-name" type="text" name="pr-last-name" placeholder="Last name" /></label></p>
+                    <p class="input-line"> <label for="pr-email"><input id="pr-email" type="email" name="pr-email"
+                                placeholder="E-mail" /></label></p>
+                    <p class="input-line"><label for="pr-tel"><input id="pr-tel" type="tel" name="pr-tel"
+                                placeholder="Phone number" /></label></p>
+                    <p class="input-line"> <label for="pr-city"><input id="pr-city" type="text" name="city"
+                                placeholder="City" /></label></p><label class="pr-submit" for="pr-submit"><input
+                            type="submit" value="Confirm the order" /></label>
+                </form>
         </div>
     </div>
     <div class="bg-orange">
@@ -127,7 +134,7 @@
                 <div class="section-content">
                     <h2><?php the_field('about_us_title', '11') ?></h2>
                     <p class="subtitle"><?php the_field('about_us_text', '11') ?>
-                    </p><a class="button transparent-button" href="contact.html">Read more</a>
+                    </p><a class="button transparent-button" href="<?php echo home_url(); ?>/contact">Read more</a>
                 </div>
                 <div class="slider-arrows">
                     <div class="arrow-left arrow-left-event"></div>
@@ -177,78 +184,65 @@
                 </div>
             </section>
             <section class="gallery">
-                <h2 class="title-mb">PHOTO GALLERY </h2>
+                <h2 class="title-mb"><?php the_field('photo_gallery_name') ?></h2>
                 <div class="slider-arrows">
                     <div class="arrow-left arrow-left-gallery"></div>
                     <div class="arrow-right arrow-right-gallery"></div>
                 </div>
+                <?php
+                $gallery = get_posts(array(
+                    'numberposts' => 6,
+                    'category'    => 0,
+                    'orderby'     => 'date',
+                    'order'       => 'DESC',
+                    'include'     => array(),
+                    'exclude'     => array(),
+                    'meta_key'    => '',
+                    'meta_value'  => '',
+                    'post_type'   => 'photo_gallery',
+                    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+                )); ?>
                 <div class="gallery-line">
-                    <div class="big-photo scrolled-picture"><img src="img/gallery_big.jpg" alt="Description" />
-                        <div class="img-hover">
-                            <div class="text">
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
-                                    aliquet</p>
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
-                                    aliquet</p>
-                            </div><a class="more" href="#">more</a>
-                        </div>
-                    </div>
-                    <div class="small-photo-wrap">
-                        <div class="small-photo scrolled-picture"><img src="img/gallery_small.jpg" alt="Description" />
-                            <div class="img-hover">
-                                <div class="text">
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                        auctor aliquet</p>
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                        auctor aliquet</p>
-                                </div><a class="more" href="#">more</a>
+                    <?php foreach ($gallery as $key => $photo) {
+                        setup_postdata($photo); ?>
+                        <?php $photo_in_gallery = get_field('photo_in_gallery', $photo->ID);
+                        if ($key % 3 == 0) { ?>
+                            <div class="big-photo scrolled-picture"><img src="<?php echo $photo_in_gallery["url"]; ?>" alt="<?php $photo_in_gallery['title']; ?>" />
+                                <div class="img-hover">
+                                    <div class="text">
+                                        <?php get_field('description', $photo->ID) ?>
+                                    </div><a class="more" href="<?php get_field('photo_instagram_link', $photo->ID) ?>">mer</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="small-photo scrolled-picture"><img src="img/gallery_small.jpg" alt="Description" />
-                            <div class="img-hover">
-                                <div class="text">
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                        auctor aliquet</p>
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                        auctor aliquet</p>
-                                </div><a class="more" href="#">more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="big-photo scrolled-picture"><img src="img/gallery_big.jpg" alt="Description" />
-                        <div class="img-hover">
-                            <div class="text">
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
-                                    aliquet</p>
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
-                                    aliquet</p>
-                            </div><a class="more" href="#">more</a>
-                        </div>
-                    </div>
-                    <div class="small-photo-wrap">
-                        <div class="small-photo scrolled-picture"><img src="img/gallery_small.jpg" alt="Description" />
-                            <div class="img-hover">
-                                <div class="text">
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                        auctor aliquet</p>
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                        auctor aliquet</p>
-                                </div><a class="more" href="#">more</a>
-                            </div>
-                        </div>
-                        <div class="small-photo scrolled-picture"><img src="img/gallery_small.jpg" alt="Description" />
-                            <div class="img-hover">
-                                <div class="text">
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                        auctor aliquet</p>
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                        auctor aliquet</p>
-                                </div><a class="more" href="#">more</a>
-                            </div>
-                        </div>
-                    </div>
+                            <?php if (isset($gallery[$key + 1])) {
+                                $photo_in_gallery = get_field('photo_in_gallery', $gallery[$key + 1]->ID); ?>
+                                <div class="small-photo-wrap">
+                                    <div class="small-photo scrolled-picture"><img src="<?php echo $photo_in_gallery["url"]; ?>" alt="<?php $photo_in_gallery['title']; ?>" />
+                                        <div class="img-hover">
+                                            <div class="text">
+                                                <?php get_field('description', $gallery[$key + 1]->ID) ?>
+                                            </div><a class="more" href="<?php get_field('photo_instagram_link', $gallery[$key + 1]->ID) ?>">mer</a>
+                                        </div>
+                                    </div>
+                                <?php }
+                            if (isset($gallery[$key + 2])) {
+                                $photo_in_gallery = get_field('photo_in_gallery', $gallery[$key + 2]->ID); ?>
+                                    <div class="small-photo scrolled-picture"><img src="<?php echo $photo_in_gallery["url"]; ?>" alt="<?php $photo_in_gallery['title']; ?>" />
+                                        <div class="img-hover">
+                                            <div class="text">
+                                                <?php get_field('description', $gallery[$key + 2]->ID) ?>
+                                            </div><a class="more" href="<?php get_field('photo_instagram_link', $gallery[$key + 2]->ID) ?>">mer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                        <?php }
+                        }
+                        ?>
+                    <?php wp_reset_postdata();
+                    } ?>
                 </div>
-                <div class="button-line"> <a class="button transparent-button" href="#">View more</a></div>
+
+                <div class="button-line"> <a class="button transparent-button" href="<?php the_field('link_for_a_photo_gallery_button') ?>" target="_blank"><?php the_field('view_more_button_text') ?></a></div>
             </section>
             <div class="services-line">
                 <?php $first_preference = get_field('first_preference', '11'); ?>

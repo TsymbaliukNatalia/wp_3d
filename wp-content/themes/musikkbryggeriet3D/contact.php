@@ -31,7 +31,8 @@ Template Name: Om oss
         </div>
     </header>
     <main>
-        <?php include_once ('register-template.php'); ?>
+    <div class="popup-bg"><?php include_once ('register-template.php'); ?></div>
+        
         <hr class="primary-line" />
         <div class="wrapper">
             <section class="about-us">

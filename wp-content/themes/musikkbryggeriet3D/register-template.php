@@ -1,4 +1,4 @@
-<div class="popup-bg">
+<!-- <div class="popup-bg"> -->
     <form class="popup sing-up" action="index.php"><span class="close"> </span>
         <p class="popup-title">SIGN UP</p>
         <p class="mini-inputs input-line"><label for="first-name"><span>First name</span><input id="first-name" type="text" name="first-name" /></label><label for="last-name"><span>Last name</span><input id="last-name" type="text" name="last-name" /></label></p>
@@ -22,4 +22,4 @@
         <p class="input-line"><label for="email-forgot-password"><span>E-mail</span><input id="email-forgot-password" type="email" name="email-forgot-password" /></label></p>
         <p class="input-line"> <input class="button" id="send-password" type="submit" value="SEND PASSWORD" /><label for="send-password"></label></p>
     </form>
-</div>
+<!-- </div> -->
