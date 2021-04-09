@@ -22,11 +22,11 @@
                 </div>
             </div>
         </div>
-
+        <?php if(get_field('first_screen_is_active', '11') == 'Active'){?>
         <section class="header-content">
             <div class="header-about">
                 <div class="header-text-wrap">
-                    <h1><?php the_field('main_text') ?></h1>
+                    <h1><?php the_field('main_text', '11') ?></h1>
                     <p class="header-subtitle"><?php the_field('smaller_main_text', '11') ?></p>
                 </div><a class="button" href="#"><?php the_field('first_screen_button_text', '11') ?></a>
             </div>
@@ -46,6 +46,7 @@
                 </div>
             </div>
         </section>
+        <?php };?>
     </div>
 </header>
 
@@ -130,17 +131,21 @@
     </div>
     <div class="bg-orange">
         <div class="wrapper">
+        
             <section class="about-us">
+            <?php if(get_field('about_us_is_active', '11') == 'Active'){?>
                 <div class="section-content">
                     <h2><?php the_field('about_us_title', '11') ?></h2>
                     <p class="subtitle"><?php the_field('about_us_text', '11') ?>
                     </p><a class="button transparent-button" href="<?php echo home_url(); ?>/contact">Read more</a>
                 </div>
+            <?php };?>
                 <div class="slider-arrows">
                     <div class="arrow-left arrow-left-event"></div>
                     <div class="arrow-right arrow-right-event"></div>
                 </div>
                 <?php
+                if(get_field('event_is_active', '11') == 'Active'){
                 $posts = get_posts(array(
                     'numberposts' => 20,
                     'category'    => 0,
@@ -172,8 +177,9 @@
                     <?php wp_reset_postdata();
                     } ?>
                 </div>
+                <?php }?> 
             </section>
-
+            <?php if(get_field('video_is_active', '11') == 'Active'){ ?>
             <section class="video">
                 <h2 class="title-mb"><?php the_field('video_section_title', '11') ?></h2>
                 <div class="video-bg">
@@ -183,6 +189,8 @@
                     <?php the_field('video_description', '11') ?>
                 </div>
             </section>
+            <?php } ?>
+            <?php if(get_field('gallery_is_active', '11') == 'Active'){ ?>
             <section class="gallery">
                 <h2 class="title-mb"><?php the_field('photo_gallery_name') ?></h2>
                 <div class="slider-arrows">
@@ -244,6 +252,8 @@
 
                 <div class="button-line"> <a class="button transparent-button" href="<?php the_field('link_for_a_photo_gallery_button') ?>" target="_blank"><?php the_field('view_more_button_text') ?></a></div>
             </section>
+            <?php } ?>
+            <?php if(get_field('preferences_is_active', '11') == 'Active'){ ?>
             <div class="services-line">
                 <?php $first_preference = get_field('first_preference', '11'); ?>
                 <div class="service service-3d-printer"><img src="<?php echo $first_preference['image_for_the_first_preference']['url'] ?>" alt="<?php echo $first_preference['the_name_of_the_first_preference'] ?>" />
@@ -266,12 +276,14 @@
                     <p><?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?></p>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div>
     <div class="slider-arrows slider-arrows-sp">
         <div class="arrow-left arrow-left-sp"></div>
         <div class="arrow-right arrow-right-sp"></div>
     </div>
+    <?php if(get_field('partners_is_active', '11') == 'Active'){ ?>
     <div class="sponsor-wrap">
         <div class="sponsor">
             <?php
@@ -283,7 +295,9 @@
             <?php endif; ?>
         </div>
     </div>
+    <?php } ?>
     <div class="wrapper bg-black">
+    <?php if(get_field('shop_is_active', '11') == 'Active'){ ?>
         <section class="shop">
             <h2>SHOP </h2>
             <div class="shop-info">
@@ -357,6 +371,7 @@
                 </figure>
             </div>
         </section>
+        <?php } ?>
     </div>
 </main>
 <footer>
