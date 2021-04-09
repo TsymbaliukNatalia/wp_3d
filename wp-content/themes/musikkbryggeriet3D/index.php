@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+<?php include_once ('my_functions.php'); ?>
 <header>
     <div class="wrapper">
         <div class="adaptive-header-line">
@@ -28,6 +28,10 @@
                 <div class="header-text-wrap">
                     <h1><?php the_field('main_text', '11') ?></h1>
                     <p class="header-subtitle"><?php the_field('smaller_main_text', '11') ?></p>
+                    <p class="header-subtitle"><?php
+                    global $wpdb;
+                    var_dump($w);
+                    ?></p>
                 </div><a class="button" href="#"><?php the_field('first_screen_button_text', '11') ?></a>
             </div>
             <div class="header-slider">
@@ -140,13 +144,14 @@
                     </p><a class="button transparent-button" href="<?php echo home_url(); ?>/contact">Read more</a>
                 </div>
             <?php };?>
-                <div class="slider-arrows">
+               
+                <?php
+                if(get_field('event_is_active', '11') == 'Active'){ ?>
+                    <div class="slider-arrows">
                     <div class="arrow-left arrow-left-event"></div>
                     <div class="arrow-right arrow-right-event"></div>
                 </div>
-                <?php
-                if(get_field('event_is_active', '11') == 'Active'){
-                $posts = get_posts(array(
+                <?php $posts = get_posts(array(
                     'numberposts' => 20,
                     'category'    => 0,
                     'orderby'     => 'date',
@@ -171,7 +176,7 @@
                             <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $post->ID); ?>" />
                             <figcaption>
                                 <h3><?php the_field('name_of_event', $post->ID); ?></h3>
-                                <p class="event-subtitle"><?php the_field('info_about_event', $post->ID); ?></p><a class="button transparent-button event-button" href="event.html">Read more </a>
+                                <p class="event-subtitle"><?php the_field('info_about_event', $post->ID); ?></p><a class="button transparent-button event-button" href="<?php echo get_permalink(); ?>">Read more </a>
                             </figcaption>
                         </figure>
                     <?php wp_reset_postdata();
@@ -250,7 +255,7 @@
                     } ?>
                 </div>
 
-                <div class="button-line"> <a class="button transparent-button" href="<?php the_field('link_for_a_photo_gallery_button') ?>" target="_blank"><?php the_field('view_more_button_text') ?></a></div>
+                <div class="button-line"> <a class="button transparent-button" href="<?php the_field('link_for_a_photo_gallery_button', '11') ?>" target="_blank"><?php the_field('view_more_button_text', '11') ?></a></div>
             </section>
             <?php } ?>
             <?php if(get_field('preferences_is_active', '11') == 'Active'){ ?>
