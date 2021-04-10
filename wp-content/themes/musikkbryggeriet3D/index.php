@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php include_once ('my_functions.php'); ?>
+<?php include_once ('upcoming_event.php'); ?>
 <header>
     <div class="wrapper">
         <div class="adaptive-header-line">
