@@ -3,7 +3,7 @@
 Template Name: Eventer
 */
 ?>
-<?php include_once ('upcoming_event.php'); ?>
+<?php include_once('upcoming_event.php'); ?>
 <?php get_header(); ?>
 <div class="second-page">
     <header>
@@ -12,9 +12,9 @@ Template Name: Eventer
                 <div class="header-line">
                     <div class="logo"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo_black.png" alt="Musikkbryggeriet3d logo" /></a></div>
                     <nav class="header-menu">
-                    <?php wp_nav_menu([
-                        'theme_location'  => 'primary',
-                    ]); ?>
+                        <?php wp_nav_menu([
+                            'theme_location'  => 'primary',
+                        ]); ?>
                     </nav>
                     <div class="right-part">
                         <div class="profile">
@@ -33,46 +33,42 @@ Template Name: Eventer
         <div class="popup-bg">
             <form class="registr-popup popup"><span class="close"> </span>
                 <p class="popup-title">HVA KAN VI HJELPE DEG MED?</p>
-                <p class="mini-inputs"><label for="registr-name"><input id="registr-name" type="text"
-                            name="registr-name" placeholder="Fornavn" /></label><label for="registr-surname"><input
-                            id="registr-surname" type="text" name="registr-surname" placeholder="Etternavn" /></label>
+                <p class="mini-inputs"><label for="registr-name"><input id="registr-name" type="text" name="registr-name" placeholder="Fornavn" /></label><label for="registr-surname"><input id="registr-surname" type="text" name="registr-surname" placeholder="Etternavn" /></label>
                 </p>
-                <p class="mini-inputs"><label for="registr-tif"><input id="registr-tif" type="text" name="registr-tif"
-                            placeholder="Tif.nr." /></label><label for="registr-mail"><input id="registr-mail"
-                            type="email" name="registr-mail" placeholder="E-post" /></label></p>
-                <p class="input-line"> <label class="request"><textarea id="request" name="request" cols="30" rows="10"
-                            placeholder="Scriv inn din henvendelse her..."></textarea></label></p>
-                <p class="input-line registr-submit-line"> <label for="registr-submit"><input class="button"
-                            id="registr-submit" type="submit" value="Send inn" /></label></p>
+                <p class="mini-inputs"><label for="registr-tif"><input id="registr-tif" type="text" name="registr-tif" placeholder="Tif.nr." /></label><label for="registr-mail"><input id="registr-mail" type="email" name="registr-mail" placeholder="E-post" /></label></p>
+                <p class="input-line"> <label class="request"><textarea id="request" name="request" cols="30" rows="10" placeholder="Scriv inn din henvendelse her..."></textarea></label></p>
+                <p class="input-line registr-submit-line"> <label for="registr-submit"><input class="button" id="registr-submit" type="submit" value="Send inn" /></label></p>
             </form>
             <?php include_once('register-template.php'); ?>
         </div>
         <!-- <hr class="primary-line" /> -->
         <div class="wrapper">
             <section class="one-event">
+                <?php
+                if (get_field('name_of_event')) {
+                    $id_event = get_the_ID();
+                } else {
+                    $id_event = $key_upcoming_event;
+                } ?>
                 <div class="flex-wrap">
                     <div class="text-description">
-                        <h2><?php the_field('name_of_event'); ?></h2>
-                        <p class="about-us-text">This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel
-                            velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat
-                            ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit
-                            amet mauris.</p>
-                        <p class="about-us-text">Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a
-                            ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti
-                            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                        <p class="about-us-text">Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit
-                            amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.
-                            Etiam pharetra, erat sed fermentum f </p>
-                        <p> <a class="button transparent-button registr" href="#">Registreringen</a></p>
+                        <h2><?php the_field('name_of_event', $id_event) ?></h2>
+                        <?php the_field('detailed_information_about_the_event', $id_event); ?>
+                        <a class="button transparent-button registr" href="#">Registreringen</a></p>
                     </div>
                     <div class="slider event-slider">
                         <div class="event-img-line">
                             <figure> <img src="img/event_slider_1.jpg" alt="Event" />
                                 <figcaption class="event-description">
-                                    <div class="cell"><time>Feb 18</time></div>
-                                    <div class="cell"><time>18:30</time></div>
+                                    <?php $d = get_field('date_event', $id_event);
+                                    $t = get_field('time_event', $id_event);
+                                    $date = date_create($d . ' ' . $t);
+                                    $event_date = date_format($date, 'M j'); 
+                                    $time = date_format($date, 'H:i');?>
+                                    <div class="cell"><time><?php echo $event_date; ?></time></div>
+                                    <div class="cell"><time><?php echo $time; ?></time></div>
                                     <div class="cell">
-                                        <address>Stokata 18</address>
+                                        <address><?php the_field('venue', $id_event) ?></address>
                                     </div>
                                 </figcaption>
                             </figure>
@@ -85,50 +81,40 @@ Template Name: Eventer
         <div class="wrapper">
             <section class="more-event">
                 <h2>MORE EVENT</h2>
-                <form class="search"> <input id="shop-search" type="search" name="shop-search"
-                        placeholder="Search" /><label for="shop-search"></label><input class="search-submit"
-                        id="event-search" type="submit" /><label for="search-submit"></label></form>
+                <form class="search"> <input id="shop-search" type="search" name="shop-search" placeholder="Search" /><label for="shop-search"></label><input class="search-submit" id="event-search" type="submit" /><label for="search-submit"></label></form>
                 <div class="events-line">
-                    <figure class="event">
-                        <div class="event-info">
-                            <address>San-Francisco </address><time>Feb 01</time>
-                        </div><img src="img/event.jpg" alt="Event" />
-                        <figcaption>
-                            <h3>NAME OF EVENT</h3>
-                            <p class="event-subtitle">INFO ABOUT EVENT. This is Photoshop's version of Lorem Ipsum.
-                                Proin gravida nibh vel</p>
-                        </figcaption>
-                    </figure>
-                    <figure class="event">
-                        <div class="event-info">
-                            <address>San-Francisco </address><time>Feb 02</time>
-                        </div><img src="img/event.jpg" alt="Event" />
-                        <figcaption>
-                            <h3>NAME OF EVENT</h3>
-                            <p class="event-subtitle">INFO ABOUT EVENT. This is Photoshop's version of Lorem Ipsum.
-                                Proin gravida nibh vel </p>
-                        </figcaption>
-                    </figure>
-                    <figure class="event">
-                        <div class="event-info">
-                            <address>San-Francisco </address><time>Feb 03</time>
-                        </div><img src="img/event.jpg" alt="Event" />
-                        <figcaption>
-                            <h3>NAME OF EVENT</h3>
-                            <p class="event-subtitle">INFO ABOUT EVENT. This is Photoshop's version of Lorem Ipsum.
-                                Proin gravida nibh vel</p>
-                        </figcaption>
-                    </figure>
-                    <figure class="event">
-                        <div class="event-info">
-                            <address>San-Francisco </address><time>Feb 04</time>
-                        </div><img src="img/event.jpg" alt="Event" />
-                        <figcaption>
-                            <h3>NAME OF EVENT</h3>
-                            <p class="event-subtitle">INFO ABOUT EVENT. This is Photoshop's version of Lorem Ipsum.
-                                Proin gravida nibh vel</p>
-                        </figcaption>
-                    </figure>
+                    <?php
+                    $events = get_posts(array(
+                        'numberposts' => -1,
+                        'category'    => 0,
+                        'orderby'     => 'date',
+                        'order'       => 'DESC',
+                        'include'     => array(),
+                        'exclude'     => array(),
+                        'meta_key'    => '',
+                        'meta_value'  => '',
+                        'post_type'   => 'events',
+                        'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+                    ));
+                    foreach ($events as $key => $event) {
+                        setup_postdata($event); ?>
+                        <figure class="event">
+                            <div class="event-info">
+                                <?php $d = get_field('date_event', $event->ID);
+                                $t = get_field('time_event', $event->ID);
+                                $date = date_create($d . ' ' . $t);
+                                $event_date = date_format($date, 'M j'); ?>
+                                <address><?php the_field('venue', $event->ID); ?></address><time><?php echo $event_date; ?></time>
+                            </div>
+                            <?php $event_poster = get_field('event_poster', $event->ID); ?>
+                            <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $event->ID); ?>" />
+                            <figcaption>
+                                <h3><?php the_field('name_of_event', $event->ID); ?></h3>
+                                <p class="event-subtitle"><?php the_field('info_about_event', $event->ID); ?></p>
+                            </figcaption>
+                        </figure>
+                    <?php wp_reset_postdata();
+                    } ?>
                 </div>
                 <div class="arrow-line">
                     <div class="arrow-left-event"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png" alt="arrow left" /></div>
@@ -138,11 +124,10 @@ Template Name: Eventer
         </div>
     </main>
     <footer>
-        <div class="social-line"><a class="soc-inst" href="#"></a><a class="soc-fb" href="#"></a><a class="soc-tw"
-                href="#"></a><a class="soc-yt" href="#"></a></div>
-        <p class="copy">Copyricht © 2020 All rights reserved</p>
+        <div class="social-line"><a class="soc-inst" href="<?php the_field('instagram', '81') ?>"></a><a class="soc-fb" href="<?php the_field('facebook', '81') ?>"></a><a class="soc-tw" href="<?php the_field('twitter', '81') ?>"></a><a class="soc-yt" href="<?php the_field('youtube', '81') ?>"></a></div>
+        <p class="copy"><?php the_field('footer_text', '11') ?></p>
     </footer>
-    
-   
-    </div>  
+
+
+</div>
 <?php get_footer(); ?>
