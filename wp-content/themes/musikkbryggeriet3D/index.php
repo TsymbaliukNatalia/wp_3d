@@ -151,23 +151,32 @@
                     <div class="arrow-left arrow-left-event"></div>
                     <div class="arrow-right arrow-right-event"></div>
                 </div>
-                <?php $events = get_posts(array(
-                    'numberposts' => 20,
-                    'category'    => 0,
-                    'orderby'     => 'date',
-                    'order'       => 'DESC',
-                    'include'     => array(),
-                    'exclude'     => array(),
-                    'meta_key'    => '',
-                    'meta_value'  => '',
+                <?php $count_events = $events = get_posts(array(
+                    'numberposts' => -1,
                     'post_type'   => 'events',
-                    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+                    'suppress_filters' => true,
+                    'fields' => 'ids'
                 ));
-                ?>
-
-                <div class="events-line">
-                    <?php foreach ($events as $event) {
-                        setup_postdata($event); ?>
+                $count = ceil(count($count_events)/4);
+                for($i = 0; $i < $count; $i++){?>
+                 <div class="events-line">
+                    <?php 
+                    $events = get_posts(array(
+                        'numberposts' => 4,
+                        'offset' => $i*4,
+                        'category'    => 0,
+                        'orderby'     => 'date',
+                        'order'       => 'DESC',
+                        'include'     => array(),
+                        'exclude'     => array(),
+                        'meta_key'    => '',
+                        'meta_value'  => '',
+                        'post_type'   => 'events',
+                        'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+                    ));
+                    foreach ($events as $key => $event) {
+                        setup_postdata($event); 
+                        ?>
                         <figure class="event">
                             <div class="event-info">
                             <?php $d = get_field('date_event', $event->ID);
@@ -186,7 +195,7 @@
                     <?php wp_reset_postdata();
                     } ?>
                 </div>
-                <?php }?> 
+                <?php } }?> 
             </section>
             <?php if(get_field('video_is_active', '11') == 'Active'){ ?>
             <section class="video">
