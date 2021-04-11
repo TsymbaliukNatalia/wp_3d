@@ -3,7 +3,7 @@
 Template Name: Eventer
 */
 ?>
-
+<?php include_once ('upcoming_event.php'); ?>
 <?php get_header(); ?>
 <div class="second-page">
     <header>

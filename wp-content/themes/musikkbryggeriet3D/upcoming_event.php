@@ -1,5 +1,4 @@
 <?php
-$w = 1;
 $events = get_posts(array(
     'numberposts' => -1,
     'category'    => 0,
@@ -62,4 +61,4 @@ if ($key_upcoming_event == false) {
     $key_upcoming_event = array_search($nextDate, $dates_arr);
 }
 
-var_dump($key_upcoming_event);
+// var_dump($key_upcoming_event);

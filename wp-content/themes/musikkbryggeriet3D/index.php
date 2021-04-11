@@ -26,21 +26,20 @@
         <section class="header-content">
             <div class="header-about">
                 <div class="header-text-wrap">
-                    <h1><?php the_field('main_text', '11') ?></h1>
-                    <p class="header-subtitle"><?php the_field('smaller_main_text', '11') ?></p>
-                    <p class="header-subtitle"><?php
-                    global $wpdb;
-                    var_dump($w);
-                    ?></p>
-                </div><a class="button" href="#"><?php the_field('first_screen_button_text', '11') ?></a>
+                    <h1><?php the_field('name_of_event', $key_upcoming_event) ?></h1>
+                    <p class="header-subtitle"><?php the_field('venue', $key_upcoming_event) ?></p>
+                    <p class="header-subtitle"><?php the_field('info_about_event', $key_upcoming_event) ?></p>
+                </div><a class="button" href="<?php echo get_permalink($key_upcoming_event); ?>">Read more</a>
             </div>
             <div class="header-slider">
                 <div class="photos">
+                    <?php $event_poster = get_field('event_poster', $key_upcoming_event);?>
+                    <img class="header-slider-img" src="<?php echo $event_poster['url'] ?>" alt="<?php echo $event_poster['title'] ?>" />
                     <?php
-                    $images = get_field('first_screen_slider', '11');
-                    if ($images) : ?>
+                    $images = explode(',', get_field('additional_pictures_for_the_event', $key_upcoming_event));?>
+                    <?php if ($images) : ?>
                         <?php foreach ($images as $image_id) : ?>
-                            <img class="header-slider-img" src="<?php echo $image_id['full_image_url'] ?>" alt="<?php echo $image_id['title'] ?>" />
+                            <img class="header-slider-img" src="<?php echo wp_get_attachment_url($image_id) ?>" alt="<?php echo $image_id['title'] ?>" />
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
