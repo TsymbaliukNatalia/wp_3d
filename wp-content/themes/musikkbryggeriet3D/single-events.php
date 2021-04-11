@@ -58,7 +58,8 @@ Template Name: Eventer
                     </div>
                     <div class="slider event-slider">
                         <div class="event-img-line">
-                            <figure> <img src="img/event_slider_1.jpg" alt="Event" />
+                        <?php $event_poster = get_field('event_poster', $id_event); ?>
+                            <figure> <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $id_event); ?>" />
                                 <figcaption class="event-description">
                                     <?php $d = get_field('date_event', $id_event);
                                     $t = get_field('time_event', $id_event);
