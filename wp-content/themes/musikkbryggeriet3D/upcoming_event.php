@@ -10,7 +10,7 @@ $events = get_posts(array(
     'meta_key'    => '',
     'meta_value'  => '',
     'post_type'   => 'events',
-    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+    'suppress_filters' => true, 
 ));
 $allDates = array();
 $dates_arr = array();

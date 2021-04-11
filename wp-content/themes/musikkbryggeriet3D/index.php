@@ -151,7 +151,7 @@
                     <div class="arrow-left arrow-left-event"></div>
                     <div class="arrow-right arrow-right-event"></div>
                 </div>
-                <?php $posts = get_posts(array(
+                <?php $events = get_posts(array(
                     'numberposts' => 20,
                     'category'    => 0,
                     'orderby'     => 'date',
@@ -166,17 +166,21 @@
                 ?>
 
                 <div class="events-line">
-                    <?php foreach ($posts as $post) {
-                        setup_postdata($post); ?>
+                    <?php foreach ($events as $event) {
+                        setup_postdata($event); ?>
                         <figure class="event">
                             <div class="event-info">
-                                <address><?php the_field('venue', $post->ID); ?></address><time><?php the_field('date_event', $post->ID); ?></time>
+                            <?php $d = get_field('date_event', $event->ID);
+                                $t = get_field('time_event', $event->ID);
+                                $date = date_create($d . ' ' . $t);
+                                $event_date = date_format($date, 'M j'); ?>
+                                <address><?php the_field('venue', $event->ID); ?></address><time><?php echo $event_date; ?></time>
                             </div>
-                            <?php $event_poster = get_field('event_poster', $post->ID); ?>
-                            <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $post->ID); ?>" />
+                            <?php $event_poster = get_field('event_poster', $event->ID); ?>
+                            <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $event->ID); ?>" />
                             <figcaption>
-                                <h3><?php the_field('name_of_event', $post->ID); ?></h3>
-                                <p class="event-subtitle"><?php the_field('info_about_event', $post->ID); ?></p><a class="button transparent-button event-button" href="<?php echo get_permalink(); ?>">Read more </a>
+                                <h3><?php the_field('name_of_event', $event->ID); ?></h3>
+                                <p class="event-subtitle"><?php the_field('info_about_event', $event->ID); ?></p><a class="button transparent-button event-button" href="<?php echo get_permalink(); ?>">Read more </a>
                             </figcaption>
                         </figure>
                     <?php wp_reset_postdata();
