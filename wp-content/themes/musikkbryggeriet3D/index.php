@@ -342,7 +342,7 @@
                         <div class="product-img-wrap"><img src="<?php echo $product_img['url'] ?>" alt="<?php the_field('name_of_product', $product->ID); ?>" /></div><a class="button transparent-button product-button" href="#">Donate</a>
                         <figcaption>
                             <div class="bg-orange">
-                                <h4 class="product-name"><?php the_field('name_of_product', $product->ID); ?></h4><span class="price"><?php the_field('product_price', $product->ID); ?> kr </span>
+                                <h4 class="product-name"><?php the_field('name_of_product', $product->ID); ?></h4><span class="price"><?php the_field('product_price', $product->ID); ?>kr </span>
                             </div>
                             <p class="product-card-description"><?php the_field('brief_description_of_the_product', $product->ID); ?></p>
                         </figcaption>
