@@ -45,49 +45,43 @@ Template Name: Shop
             </div>
         </div>
         <div class="wrapper">
-        <section class="product-section">
+            <section class="product-section">
                 <h2><?php the_field('name_of_product'); ?></h2>
                 <div class="flex-wrap">
                     <div class="half">
                         <div class="product-menu-line flex-wrap">
-                            <form class="search"> <input id="shop-search" type="search" name="shop-search"
-                                    placeholder="Search" /><label for="shop-search"></label><input class="search-submit"
-                                    id="event-search" type="submit" /><label for="search-submit"></label></form>
-                            <div class="shop-cabinet"><span class="balance">0$</span><button class="basket"> <img
-                                        src="<?php echo get_template_directory_uri() ?>/assets/img/basket.png" alt="Basket" /></button></div>
+                            <form class="search"> <input id="shop-search" type="search" name="shop-search" placeholder="Search" /><label for="shop-search"></label><input class="search-submit" id="event-search" type="submit" /><label for="search-submit"></label></form>
+                            <div class="shop-cabinet"><span class="balance">0$</span><button class="basket"> <img src="<?php echo get_template_directory_uri() ?>/assets/img/basket.png" alt="Basket" /></button></div>
                         </div>
                         <div class="text-description">
-                        <?php the_field('detailed_description_product'); ?>
+                            <?php the_field('detailed_description_product'); ?>
                         </div>
-                        <form class="product-order"> <button class="button button-plus"> </button><label
-                                class="score"><input type="number" name="product-quantity" value="1" /></label><button
-                                class="button button-minus"></button><label> <input class="button donate-button"
-                                    type="submit" value="Donate" /></label></form>
+                        <form class="product-order"> <button class="button button-plus"> </button><label class="score"><input type="number" name="product-quantity" value="1" /></label><button class="button button-minus"></button><label> <input class="button donate-button" type="submit" value="Donate" /></label></form>
                     </div>
                     <div class="slider goods-slider">
                         <div class="contact-slider-line flex-wrap">
-                            <div class="arrow-left-contact js-arrow-left"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png"
-                                    alt="arrow left" /></div>
+                            <div class="arrow-left-contact js-arrow-left"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png" alt="arrow left" /></div>
                             <div class="product-slider-line js-slider-line">
-                                <div class="collage js-slider-object"> <img src="<?php echo get_template_directory_uri() ?>/assets/img/shop_product.jpg" alt="Product" />
+                                <?php $product_main_img = get_field('main_photo_product'); ?>
+                                <div class="collage js-slider-object"> <img src="<?php echo $product_main_img['url'] ?>" alt="<?php the_field('name_of_product'); ?>" />
                                     <div class="product-price-on-img"><span><?php the_field('product_price'); ?>kr</span></div>
                                 </div>
-                                <div class="collage js-slider-object"> <img src="<?php echo get_template_directory_uri() ?>/assets/img/shop_product.jpg" alt="Product" />
-                                    <div class="product-price-on-img"><span><?php the_field('product_price'); ?>kr</span></div>
-                                </div>
-                                <div class="collage js-slider-object"> <img src="<?php echo get_template_directory_uri() ?>/assets/img/shop_product.jpg" alt="Product" />
-                                    <div class="product-price-on-img"><span><?php the_field('product_price'); ?>kr</span></div>
-                                </div>
+                                <?php
+                                $images = explode(',', get_field('additional_photos_product')); ?>
+                                <?php if ($images) : ?>
+                                    <?php foreach ($images as $image_id) : ?>
+                                        <div class="collage js-slider-object"> <img src="<?php echo wp_get_attachment_url($image_id) ?>" alt="<?php the_field('name_of_product'); ?>" />
+                                            <div class="product-price-on-img"><span><?php the_field('product_price'); ?>kr</span></div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </div>
-                            <div class="arrow-right-contact js-arrow-right"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png"
-                                    alt="arrow right" /></div>
+                            <div class="arrow-right-contact js-arrow-right"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png" alt="arrow right" /></div>
                         </div>
                         <div class="switch-slider-line flex-wrap">
-                            <div class="arrow-left-contact switch-arrow-left"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png"
-                                    alt="arrow left" /></div>
+                            <div class="arrow-left-contact switch-arrow-left"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png" alt="arrow left" /></div>
                             <div class="additional-photo"> </div>
-                            <div class="arrow-right-contact switch-arrow-right"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png"
-                                    alt="arrow right" /></div>
+                            <div class="arrow-right-contact switch-arrow-right"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png" alt="arrow right" /></div>
                         </div>
                     </div>
                 </div>
