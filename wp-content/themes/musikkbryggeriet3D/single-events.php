@@ -8,25 +8,7 @@ Template Name: Eventer
 <div class="second-page">
     <header>
         <div class="wrapper">
-            <div class="adaptive-header-line">
-                <div class="header-line">
-                    <div class="logo"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo_black.png" alt="Musikkbryggeriet3d logo" /></a></div>
-                    <nav class="header-menu">
-                        <?php wp_nav_menu([
-                            'theme_location'  => 'primary',
-                        ]); ?>
-                    </nav>
-                    <div class="right-part">
-                        <div class="profile">
-                            <ul class="sing-menu">
-                                <li><a class="sing-up-button" href="#">SIGN&nbsp;UP</a></li>
-                                <li><a class="sing-in-button" href="#">SIGN&nbsp;IN</a></li>
-                            </ul>
-                        </div>
-                        <div class="burger"><span></span></div>
-                    </div>
-                </div>
-            </div>
+            <?php include_once('templates/header-line.php'); ?>
         </div>
     </header>
     <main>
@@ -58,17 +40,23 @@ Template Name: Eventer
                     </div>
                     <div class="slider event-slider">
                         <div class="event-img-line">
-                        <?php $event_poster = get_field('event_poster', $id_event); ?>
+                            <?php $event_poster = get_field('event_poster', $id_event); ?>
                             <figure> <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $id_event); ?>" />
                                 <figcaption class="event-description">
                                     <?php $d = get_field('date_event', $id_event);
                                     $t = get_field('time_event', $id_event);
                                     $date = date_create($d . ' ' . $t);
-                                    $event_date = date_format($date, 'M j'); 
-                                    $time = date_format($date, 'H:i');?>
-                                    <div class="cell"><time><?php echo $event_date; ?></time></div>
-                                    <div class="cell"><time><?php echo $time; ?></time></div>
-                                    <div class="cell">
+                                    $event_date = date_format($date, 'M j');
+                                    $time = date_format($date, 'H:i'); ?>
+                                    <div class="cell  date"><svg>
+                                            <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#date"></use>
+                                        </svg><time><?php echo $event_date; ?></time></div>
+                                    <div class="cell time"><svg>
+                                            <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#clock"></use>
+                                        </svg><time><?php echo $time; ?></time></div>
+                                    <div class="cell place"><svg>
+                                            <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#place"></use>
+                                        </svg>
                                         <address><?php the_field('venue', $id_event) ?></address>
                                     </div>
                                 </figcaption>
@@ -99,7 +87,7 @@ Template Name: Eventer
                     ));
                     foreach ($events as $key => $event) {
                         setup_postdata($event); ?>
-                        <figure class="event">
+                        <figure class="event"><a class="product-link" href="<?php echo get_permalink($event->ID); ?>"></a>
                             <div class="event-info">
                                 <?php $d = get_field('date_event', $event->ID);
                                 $t = get_field('time_event', $event->ID);
@@ -124,11 +112,6 @@ Template Name: Eventer
             </section>
         </div>
     </main>
-    <footer>
-        <div class="social-line"><a class="soc-inst" href="<?php the_field('instagram', '81') ?>"></a><a class="soc-fb" href="<?php the_field('facebook', '81') ?>"></a><a class="soc-tw" href="<?php the_field('twitter', '81') ?>"></a><a class="soc-yt" href="<?php the_field('youtube', '81') ?>"></a></div>
-        <p class="copy"><?php the_field('footer_text', '11') ?></p>
-    </footer>
-
-
+    <?php include_once('templates/footer-line.php'); ?>
 </div>
 <?php get_footer(); ?>

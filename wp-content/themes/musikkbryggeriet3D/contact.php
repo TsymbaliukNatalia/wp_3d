@@ -9,31 +9,11 @@ Template Name: Om oss
 <div class="second-page">
     <header>
         <div class="wrapper">
-            <div class="adaptive-header-line">
-                <div class="header-line">
-                    <div class="logo"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo_black.png" alt="Musikkbryggeriet3d logo" /></a></div>
-                    <nav class="header-menu">
-                        <?php wp_nav_menu([
-                            'theme_location'  => 'primary',
-                        ]); ?>
-                    </nav>
-                    <div class="right-part">
-                        <div class="profile">
-                            <ul class="sing-menu">
-                                <li><a class="sing-up-button" href="#">SIGN&nbsp;UP</a></li>
-                                <li><a class="sing-in-button" href="#">SIGN&nbsp;IN</a></li>
-                            </ul>
-                        </div>
-                        <div class="burger"><span></span></div>
-                    </div>
-                </div>
-            </div>
+        <?php include_once('templates/header-line.php'); ?>
         </div>
     </header>
     <main>
     <div class="popup-bg"><?php include_once ('register-template.php'); ?></div>
-        
-        <hr class="primary-line" />
         <div class="wrapper">
             <section class="about-us">
                 <h2><?php the_field('headline_for_information_about_us') ?></h2>
@@ -57,7 +37,6 @@ Template Name: Om oss
                 </div>
             </section>
         </div>
-        <hr class="primary-line" />
         <div class="wrapper">
             <section class="contact">
                 <h2><?php the_field('headline_for_contact_block') ?></h2>
@@ -75,9 +54,6 @@ Template Name: Om oss
             </section>
         </div>
     </main>
-    <footer>
-        <div class="social-line"><a class="soc-inst" href="<?php the_field('instagram') ?>"></a><a class="soc-fb" href="<?php the_field('facebook') ?>"></a><a class="soc-tw" href="<?php the_field('twitter') ?>"></a><a class="soc-yt" href="<?php the_field('youtube') ?>"></a></div>
-        <p class="copy"><?php the_field('footer_text', '11') ?></p>
-    </footer>
+    <?php include_once('templates/footer-line.php'); ?>
 </div>
 <?php get_footer(); ?>

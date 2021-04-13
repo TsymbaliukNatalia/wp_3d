@@ -8,29 +8,13 @@ Template Name: Shop
     <header>
         <div class="wrapper">
             <div class="adaptive-header-line">
-                <div class="header-line">
-                    <div class="logo"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo_black.png" alt="Musikkbryggeriet3d logo" /></a></div>
-                    <nav class="header-menu">
-                        <?php wp_nav_menu([
-                            'theme_location'  => 'primary',
-                        ]); ?>
-                    </nav>
-                    <div class="right-part">
-                        <div class="profile">
-                            <ul class="sing-menu">
-                                <li><a class="sing-up-button" href="#">SIGN&nbsp;UP</a></li>
-                                <li><a class="sing-in-button" href="#">SIGN&nbsp;IN</a></li>
-                            </ul>
-                        </div>
-                        <div class="burger"><span></span></div>
-                    </div>
-                </div>
+            <?php include_once('templates/header-line.php'); ?>
             </div>
         </div>
     </header>
     <main>
         <div class="popup-bg">
-            <?php include_once('register-template.php'); ?>
+            <?php include_once('templates/register-template.php'); ?>
             <div class="popup grey-popup basket-popup"><b class="your-order">Your order</b>
                 <div class="basket-products">
                     <p class="basket-clear">Basket is clear</p>
@@ -88,13 +72,6 @@ Template Name: Shop
             </section>
         </div>
     </main>
-    <footer>
-        <div class="social-line"><a class="soc-inst" href="#"><img src="img/inst.svg" alt="Instagram" /></a><a class="soc-fb" href="#"><svg class="fb-img">
-                    <use xlink:href="img/sprite.svg#fb"></use>
-                </svg></a><a class="soc-tw" href="#"><img src="img/tw.svg" alt="Twitter" /></a><a class="soc-yt" href="#"><svg>
-                    <use xlink:href="img/sprite.svg#yt"></use>
-                </svg></a></div>
-        <p class="copy"><?php the_field('footer_text', '11') ?></p>
-    </footer>
+    <?php include_once('templates/footer-line.php'); ?>
 </div>
 <?php get_footer(); ?>

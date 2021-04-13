@@ -2,26 +2,7 @@
 <?php include_once('upcoming_event.php'); ?>
 <header>
     <div class="wrapper">
-        <div class="adaptive-header-line">
-            <div class="header-line">
-                <div class="logo"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" alt="Musikkbryggeriet3d logo" /></a>
-                </div>
-                <nav class="header-menu">
-                    <?php wp_nav_menu([
-                        'theme_location'  => 'primary',
-                    ]); ?>
-                </nav>
-                <div class="right-part">
-                    <div class="profile">
-                        <ul class="sing-menu">
-                            <li><a class="sing-up-button" href="#">SIGN&nbsp;UP</a></li>
-                            <li><a class="sing-in-button" href="#">SIGN&nbsp;IN</a></li>
-                        </ul>
-                    </div>
-                    <div class="burger"><span></span></div>
-                </div>
-            </div>
-        </div>
+    <?php include_once('templates/header-line.php'); ?>
         <?php if (get_field('first_screen_is_active', '11') == 'Active') { ?>
             <section class="header-content">
                 <div class="header-about">
@@ -56,7 +37,7 @@
 <main>
 
     <div class="popup-bg">
-        <?php include_once('register-template.php'); ?>
+        <?php include_once('templates/register-template.php'); ?>
         <div class="popup grey-popup printer-popup"><span class="close"> </span>
             <?php $first_preference = get_field('first_preference', '11'); ?>
             <p class="popup-title printer-popup-title"><?php echo $first_preference['the_name_of_the_first_preference'] ?></p>
@@ -321,7 +302,7 @@
                     <div class="arrow-right arrow-right-shop"></div>
                 </div>
                 <div class="shop-products">
-                <?php
+                    <?php
                     $products = get_posts(array(
                         'numberposts' => -1,
                         'category'    => 0,
@@ -333,21 +314,22 @@
                         'meta_value'  => '',
                         'post_type'   => 'products',
                         'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-                )); 
-                foreach ($products as $product) {
-                    setup_postdata($product);
-                    $product_img = get_field('main_photo_product', $product->ID);
-                ?>
-                    <figure class="shop-product"> <a class="product-link" href="<?php echo get_permalink($product->ID); ?>"></a>
-                        <div class="product-img-wrap"><img src="<?php echo $product_img['url'] ?>" alt="<?php the_field('name_of_product', $product->ID); ?>" /></div><a class="button transparent-button product-button" href="#">Donate</a>
-                        <figcaption>
-                            <div class="bg-orange">
-                                <h4 class="product-name"><?php the_field('name_of_product', $product->ID); ?></h4><span class="price"><?php the_field('product_price', $product->ID); ?>kr </span>
-                            </div>
-                            <p class="product-card-description"><?php the_field('brief_description_of_the_product', $product->ID); ?></p>
-                        </figcaption>
-                    </figure>
-                <?php wp_reset_postdata(); } ?>
+                    ));
+                    foreach ($products as $product) {
+                        setup_postdata($product);
+                        $product_img = get_field('main_photo_product', $product->ID);
+                    ?>
+                        <figure class="shop-product"> <a class="product-link" href="<?php echo get_permalink($product->ID); ?>"></a>
+                            <div class="product-img-wrap"><img src="<?php echo $product_img['url'] ?>" alt="<?php the_field('name_of_product', $product->ID); ?>" /></div><a class="button transparent-button product-button" href="#">Donate</a>
+                            <figcaption>
+                                <div class="bg-orange">
+                                    <h4 class="product-name"><?php the_field('name_of_product', $product->ID); ?></h4><span class="price"><?php the_field('product_price', $product->ID); ?>kr </span>
+                                </div>
+                                <p class="product-card-description"><?php the_field('brief_description_of_the_product', $product->ID); ?></p>
+                            </figcaption>
+                        </figure>
+                    <?php wp_reset_postdata();
+                    } ?>
                 </div>
             </section>
         <?php } ?>
@@ -356,5 +338,4 @@
 <footer>
     <p class="copy"><?php the_field('footer_text', '11') ?></p>
 </footer>
-
 <?php get_footer(); ?>
