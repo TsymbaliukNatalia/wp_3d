@@ -123,4 +123,27 @@ function register_post_types(){
 
 function theme_register_nav_menu() {
 	register_nav_menu( 'primary', 'Primary Menu' );
+	register_nav_menu( 'login-menu', 'Register Menu' );
 }
+
+add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args, $depth ){
+	if($item->ID === 276){
+		$atts['class'] = 'sing-up-button';	
+	} else if ($item->ID === 275) {
+		$atts['class'] = 'sing-in-button';
+	}
+    return $atts;
+}, 10, 4 );
+
+add_filter( 'nav_menu_css_class', function ( $classes, $item, $args, $depth ){
+	$newClasses = [];
+
+	return $newClasses;
+}, 10, 4 );
+
+
+add_filter( 'nav_menu_item_id', function ( $menu_id, $item, $args, $depth ){
+	$newId = [];
+
+	return $newId;
+}, 10, 4 );
