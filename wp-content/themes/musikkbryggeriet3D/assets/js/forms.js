@@ -6,7 +6,7 @@ jQuery(document).ready(function($){
         let $form = $(this);
         let data = $form.serialize();
 
-        $.post( "/wp_3d/wp-admin/admin-ajax.php?action=register", data, function(data)
+        $.post( window._SERVER_DATA.ajaxurl + "?action=register", data, function(data)
         {
             let $singUpErrors = $('.sing-up-errors');
             if(typeof(data) == 'object'){
@@ -21,6 +21,7 @@ jQuery(document).ready(function($){
             }
             if(typeof(data) == 'number'){
                 closePopup();
+                singInOpen(e);
             }
         }, 'json');
     });
