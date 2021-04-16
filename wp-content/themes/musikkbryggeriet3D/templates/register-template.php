@@ -1,5 +1,5 @@
 <!-- <div class="popup-bg"> -->
-    <form class="popup sing-up" action="index.php"><span class="close"> </span>
+    <form class="popup sing-up" method="post"><span class="close"> </span>
         <p class="popup-title">SIGN UP</p>
         <p class="mini-inputs input-line"><label for="first-name"><span>First name</span><input id="first-name" type="text" name="first-name" /></label><label for="last-name"><span>Last name</span><input id="last-name" type="text" name="last-name" /></label></p>
         <p class="input-line"> <label for="username"><span>Username</span><input id="username" type="text" name="username" /></label></p>
@@ -7,6 +7,7 @@
         <p class="input-line"> <label for="password"><span>Pasword</span><input id="password-sing-up" type="password" name="password" /></label></p>
         <p class="have-account"> <a class="sing-in-button" href="#">Already have an account?
                 <span>Join</span></a></p>
+        <p class="sing-up-errors"></p>
         <p class="input-line"> <input class="button" id="sing-up" type="submit" value="SIGN UP" /><label for="sing-up"></label></p>
     </form>
     <form class="popup sing-in" action="index.php"><span class="close"> </span>

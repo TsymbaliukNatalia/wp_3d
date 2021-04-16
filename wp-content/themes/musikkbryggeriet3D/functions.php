@@ -1,5 +1,7 @@
 <?php
 
+include_once('inc/function-modules/register.php');
+
 add_action('wp_enqueue_scripts', 'my_wp_head_css' );
 add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
 add_action( 'init', 'register_post_types' );
@@ -13,6 +15,7 @@ function my_wp_head_css() {
 
 function my_scripts_method(){
 	wp_enqueue_script( 'header_script', get_template_directory_uri() . '/assets/js/header.js', array(), false, 'in_footer');
+	wp_enqueue_script( 'forms_script', get_template_directory_uri() . '/assets/js/forms.js', array('jquery'), false, 'in_footer');
 	if(is_page(11)){
 		wp_enqueue_script( 'basket_script', get_template_directory_uri() . '/assets/js/basket.js', array(), false, 'in_footer');
 		wp_enqueue_script( 'scripts_script', get_template_directory_uri() . '/assets/js/scripts.js', array(), false, 'in_footer');
@@ -123,27 +126,4 @@ function register_post_types(){
 
 function theme_register_nav_menu() {
 	register_nav_menu( 'primary', 'Primary Menu' );
-	register_nav_menu( 'login-menu', 'Register Menu' );
 }
-
-add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args, $depth ){
-	if($item->ID === 276){
-		$atts['class'] = 'sing-up-button';	
-	} else if ($item->ID === 275) {
-		$atts['class'] = 'sing-in-button';
-	}
-    return $atts;
-}, 10, 4 );
-
-add_filter( 'nav_menu_css_class', function ( $classes, $item, $args, $depth ){
-	$newClasses = [];
-
-	return $newClasses;
-}, 10, 4 );
-
-
-add_filter( 'nav_menu_item_id', function ( $menu_id, $item, $args, $depth ){
-	$newId = [];
-
-	return $newId;
-}, 10, 4 );

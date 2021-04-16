@@ -18,14 +18,10 @@
             <div class="profile"><svg>
                     <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#profile"></use>
                 </svg>
-                <!-- <ul class="sing-menu"> -->
-                    <?php wp_nav_menu([
-                        'theme_location'  => 'login-menu',
-                        'container' => 'false',
-                        'menu_class' => 'sing-menu',
-                        
-                    ]); ?>
-                <!-- </ul> -->
+                <ul class="sing-menu">
+                    <li><a class="sing-up-button" href="#">SIGN&nbsp;UP</a></li>
+                    <li><a class="sing-in-button" href="#">SIGN&nbsp;IN</a></li>
+                </ul>
             </div>
             <div class="burger"><span></span></div>
         </div>
