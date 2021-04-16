@@ -10,12 +10,13 @@
         <p class="sing-up-errors"></p>
         <p class="input-line"> <input class="button" id="sing-up" type="submit" value="SIGN UP" /><label for="sing-up"></label></p>
     </form>
-    <form class="popup sing-in" action="index.php"><span class="close"> </span>
+    <form class="popup sing-in" method="post"><span class="close"> </span>
         <p class="popup-title">SIGN IN</p>
         <p class="input-line"><label for="email"><span>E-mail</span><input id="email-sing-in" type="email" name="email" /></label></p>
         <p class="input-line"> <label class="password-label" for="password"><span>Pasword</span><a class="forgot-password-button" href="#">Forgot your password?</a><input id="password-sing-in" type="password" name="password" /></label></p>
         <p class="have-account"> <a class="sing-up-button" href="#">Dont have a account? <span> Join </span></a>
         </p>
+        <p class="login-errors"></p>
         <p class="input-line"> <input class="button" id="sing-in" type="submit" value="SIGN IN" /><label for="sing-up"></label></p>
     </form>
     <form class="popup forgot-password" action="index.php"><span class="close"> </span>

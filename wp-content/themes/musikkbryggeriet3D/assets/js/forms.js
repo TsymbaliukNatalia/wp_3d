@@ -20,9 +20,31 @@ jQuery(document).ready(function($){
                 });  
             }
             if(typeof(data) == 'number'){
+                $singUpErrors.empty();
                 closePopup();
                 singInOpen(e);
             }
+        }, 'json');
+    });
+
+    $('.sing-in').on('submit', function(e){
+        e.preventDefault();
+        let $form = $(this);
+        let data = $form.serialize();
+
+        $.post( window._SERVER_DATA.ajaxurl + "?action=login", data, function(data)
+        {
+            let $loginUpErrors = $('.login-errors');
+            if(typeof(data) == 'string'){
+                $loginUpErrors.empty();
+                $loginUpErrors.css('color', 'red');
+                $loginUpErrors.css('font-size', '18px');
+                $loginUpErrors.text(data);
+            } else {
+                $loginUpErrors.empty();
+                closePopup();
+            }
+            console.log(data);
         }, 'json');
     });
 
