@@ -44,7 +44,27 @@ jQuery(document).ready(function($){
                 $loginUpErrors.empty();
                 closePopup();
             }
-            console.log(data);
+        }, 'json');
+    });
+
+    $('.forgot-password').on('submit', function(e){
+        e.preventDefault();
+        let $form = $(this);
+        let data = $form.serialize();
+        console.log(data);
+        $.post( window._SERVER_DATA.ajaxurl + "?action=recover_password", data, function(data)
+        {
+            let $forgotPasswordErrors = $('.forgot-password-errors');
+            if(!data["email_exist"]){
+                $forgotPasswordErrors.empty();
+                $forgotPasswordErrors.css('color', 'red');
+                $forgotPasswordErrors.css('font-size', '18px');
+                $forgotPasswordErrors.text(data["error"]);
+            } else {
+                console.log(data);
+                $forgotPasswordErrors.empty();
+                closePopup();
+            }
         }, 'json');
     });
 
