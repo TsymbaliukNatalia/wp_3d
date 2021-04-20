@@ -11,10 +11,20 @@ function shop_ajax_search()
     $args = array(
         'post_type'      => 'products',
         'post_status'    => 'publish',
-        'order'          => 'DESC',
-        'orderby'        => 'date',
-        's'              => $_POST['term'],
-        'posts_per_page' => -1
+        'posts_per_page' => -1,
+        'meta_query' => array(
+            'relation' => 'OR',
+            array(
+                'key' => 'name_of_product',
+                'value' => $_POST['term'],
+                'compare' => 'LIKE'
+            ),
+            array(
+                'key' => 'brief_description_of_the_product',
+                'value' => $_POST['term'],
+                'compare' => 'LIKE'
+            )
+        )
     );
     $query = new WP_Query($args);
     if ($query->have_posts()) { ?>
@@ -45,10 +55,25 @@ function event_ajax_search()
     $args = array(
         'post_type'      => 'events',
         'post_status'    => 'publish',
-        'order'          => 'DESC',
-        'orderby'        => 'date',
-        's'              => $_POST['term'],
-        'posts_per_page' => -1
+        'posts_per_page' => -1,
+        'meta_query' => array(
+            'relation' => 'OR',
+            array(
+                'key' => 'venue',
+                'value' => $_POST['term'],
+                'compare' => 'LIKE'
+            ),
+            array(
+                'key' => 'name_of_event',
+                'value' => $_POST['term'],
+                'compare' => 'LIKE'
+            ),
+            array(
+                'key' => 'info_about_event',
+                'value' => $_POST['term'],
+                'compare' => 'LIKE'
+            )
+        )
     );
     $query = new WP_Query($args);
     if ($query->have_posts()) { ?>
@@ -75,6 +100,7 @@ function event_ajax_search()
     <?php } else { ?>
         <br>
         <h3 style="color: red;">Ingenting funnet! Prøv en annen forespørsel!</h3>
+        <br>
 <?php }
     exit;
 } ?>
