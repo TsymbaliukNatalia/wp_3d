@@ -70,8 +70,9 @@ Template Name: Eventer
         <div class="wrapper">
             <section class="more-event">
                 <h2>MORE EVENT</h2>
-                <form class="search"> <input id="shop-search" type="search" name="shop-search" placeholder="Search" /><label for="shop-search"></label><input class="search-submit" id="event-search" type="submit" /><label for="search-submit"></label></form>
-                <div class="events-line">
+                <form class="search" id="event-search-form"> <input id="event-search" type="search" name="shop-search" placeholder="Search" /><label for="shop-search"></label><input class="search-submit" id="event-search" type="submit" /><label for="search-submit"></label></form>
+                <div class="codyshop-ajax-search"></div>
+                <div class="events-line search-hiden">
                     <?php
                     $events = get_posts(array(
                         'numberposts' => -1,
