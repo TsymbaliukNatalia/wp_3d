@@ -68,41 +68,34 @@ jQuery(document).ready(function($){
         }, 'json');
     });
     
-    // $('#shop-search').keyup(function(eventObject){
-    //     if($('#shop-search').value().length === 0){
-    //         $(".search-hiden").css("display", "block");
-    //     }
-    // };
-
-
+    
     $('#shop-search-form').on('submit', function(e){
         e.preventDefault();
     });
 
-    $('#shop-search').keyup(function(eventObject){
+    $('#shop-search').change(function(eventObject){
         
         var searchTerm = $(this).val();
-        if(searchTerm.length > 2){
-            $(".search-hiden").css("display", "none");
-			$.ajax({
-				url : window._SERVER_DATA.ajaxurl + '?action=shop_ajax_search',
-				type: 'POST',
-				data:{
-					'term'  :searchTerm
-				},
-				success:function(result){
-                    console.log(result);
-					$('.codyshop-ajax-search').fadeIn().html(result);
-				}
-            });
-        }
-        
+        $(".search-hiden").css("display", "none");
+        $.ajax({
+            url : window._SERVER_DATA.ajaxurl + '?action=shop_ajax_search',
+            type: 'POST',
+            data:{
+                'term'  :searchTerm
+            },
+            success:function(result){
+
+                $('.codyshop-ajax-search').fadeIn().html(result);
+            }
+        });
     });
+
+
     $('#event-search-form').on('submit', function(e){
         e.preventDefault();
     });
 
-    $('#event-search').keyup(function(eventObject){
+    $('#event-search').change(function(eventObject){
         
         var searchTerm = $(this).val();
         if(searchTerm.length > 2){
