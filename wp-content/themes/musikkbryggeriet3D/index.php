@@ -295,13 +295,14 @@
                 <h2><?php the_field('the_name_of_the_shop', '11'); ?></h2>
                 <div class="shop-info">
                     <div class="shop-cabinet"><span class="balance">0kr</span><button class="basket"> <img src="<?php echo get_template_directory_uri() ?>/assets/img/basket.png" alt="Basket" /></button></div>
-                    <form class="search" action="index.php"><input id="shop-search" type="search" name="shop-search" placeholder="Search" /><label for="shop-search"></label><input class="search-submit" id="search-submit" type="submit" /><label for="search-submit"></label></form>
+                    <form class="search" id="shop-search-form" action="index.php"><input id="shop-search" type="search" name="shop-search" placeholder="Search" /><label for="shop-search"></label><input class="search-submit" id="search-submit" type="submit" /><label for="search-submit"></label></form>
                 </div>
                 <div class="slider-arrows">
                     <div class="arrow-left arrow-left-shop"></div>
                     <div class="arrow-right arrow-right-shop"></div>
                 </div>
-                <div class="shop-products">
+                <div class="codyshop-ajax-search"></div>
+                <div class="shop-products search-hiden">
                     <?php
                     $products = get_posts(array(
                         'numberposts' => -1,

@@ -1,6 +1,7 @@
 <?php
 
 include_once('inc/function-modules/register.php');
+include_once('inc/function-modules/search-functions.php');
 
 add_action('wp_enqueue_scripts', 'my_wp_head_css' );
 add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
