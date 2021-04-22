@@ -8,7 +8,7 @@
                 <div class="header-about">
                     <div class="header-text-wrap">
                         <h1><?php the_field('name_of_event', $key_upcoming_event) ?></h1>
-                        <p class="header-subtitle"><?php the_field('venue', $key_upcoming_event) ?></p>
+                        <!-- <p class="header-subtitle"><?php the_field('venue', $key_upcoming_event) ?></p> -->
                         <p class="header-subtitle"><?php the_field('info_about_event', $key_upcoming_event) ?></p>
                     </div><a class="button" href="<?php echo get_permalink($key_upcoming_event); ?>">Read more</a>
                 </div>

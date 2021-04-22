@@ -88,7 +88,7 @@ Template Name: Eventer
                     ));
                     foreach ($events as $key => $event) {
                         setup_postdata($event); ?>
-                        <figure class="event"><a class="product-link" href="<?php echo get_permalink($event->ID); ?>"></a>
+                        <figure class="event">
                             <?php $d = get_field('date_event', $event->ID);
                             $t = get_field('time_event', $event->ID);
                             $date = date_create($d . ' ' . $t);
