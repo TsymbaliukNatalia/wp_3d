@@ -1,4 +1,3 @@
-
 jQuery(document).ready(function($){
 
     $('.sing-up').on('submit', function(e){

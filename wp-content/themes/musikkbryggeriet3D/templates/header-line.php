@@ -3,7 +3,9 @@
         <div class="logo">
             <a href="<?php echo home_url(); ?>">
                 <?php if (is_page(11)) { ?>
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" alt="Musikkbryggeriet3d logo" />
+                    <svg>
+                        <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#logo"></use>
+                    </svg>
                 <?php } else {  ?>
                     <img src="<?php echo get_template_directory_uri() ?>/assets/img/logo_black.png" alt="Musikkbryggeriet3d logo" />
                 <?php } ?>

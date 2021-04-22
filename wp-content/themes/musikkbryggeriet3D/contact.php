@@ -9,11 +9,11 @@ Template Name: Om oss
 <div class="second-page">
     <header>
         <div class="wrapper">
-        <?php include_once('templates/header-line.php'); ?>
+            <?php include_once('templates/header-line.php'); ?>
         </div>
     </header>
     <main>
-    <div class="popup-bg"><?php include_once ('register-template.php'); ?></div>
+        <div class="popup-bg"><?php include_once('register-template.php'); ?></div>
         <div class="wrapper">
             <section class="about-us">
                 <h2><?php the_field('headline_for_information_about_us') ?></h2>
@@ -28,9 +28,9 @@ Template Name: Om oss
                             <?php
                             $images = get_field('slider_about_us', '81');
                             $img = explode(',', $images);
-                            foreach($img as $id){ ?>
-                                <img class="js-slider-object" src="<?php echo wp_get_attachment_url($id);?>" alt="<?php echo get_the_title($id);?>" />
-                            <?php }?>
+                            foreach ($img as $id) { ?>
+                                <img class="js-slider-object" src="<?php echo wp_get_attachment_url($id); ?>" alt="<?php echo get_the_title($id); ?>" />
+                            <?php } ?>
                         </div>
                         <div class="arrow-right-contact js-arrow-right"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png" alt="arrow right" /></div>
                     </div>
@@ -48,7 +48,12 @@ Template Name: Om oss
                     <div class="contact-information"> <strong><a class="info-tel" href="tel:+<?php echo $contact_phone; ?>"><?php the_field('contact_phone') ?></a></strong><strong>
                             <address class="info-address"><?php the_field('contact_adress') ?></address>
                         </strong><strong><a class="info-mail" href="mailto:<?php the_field('contact_e-mail') ?>"><?php the_field('contact_e-mail') ?></a></strong></div>
-                    <div class="map"><iframe src="https://www.google.com/maps/d/u/0/embed?mid=1fzyQDJk9dlUwyrcroYMC9DjzSY7vH8tn"></iframe>
+                    <div class="registr-form">
+                        <p class="left-part"><label for="registr-name"><input id="registr-name" type="text" name="registr-name" placeholder="Fornavn" /></label><label for="registr-surname"><input id="registr-surname" type="text" name="registr-surname" placeholder="Etternavn" /></label></p>
+                        <p class="middle-part"><label for="registr-tif"><input id="registr-tif" type="text" name="registr-tif" placeholder="Tif.nr." /></label><label for="registr-mail"><input id="registr-mail" type="email" name="registr-mail" placeholder="E-post" /></label>
+                        </p>
+                        <p class="input-line right-part"> <label class="request"><textarea id="request" name="request" cols="30" rows="5" placeholder="Scriv inn din henvendelse her..."></textarea></label></p>
+                        <p class="input-line registr-submit-line submit-part"> <label for="registr-submit"><input class="button" id="registr-submit" type="submit" value="Send inn" /></label></p>
                     </div>
                 </div>
             </section>

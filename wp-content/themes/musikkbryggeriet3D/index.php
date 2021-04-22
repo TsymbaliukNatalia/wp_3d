@@ -2,7 +2,7 @@
 <?php include_once('upcoming_event.php'); ?>
 <header>
     <div class="wrapper">
-    <?php include_once('templates/header-line.php'); ?>
+        <?php include_once('templates/header-line.php'); ?>
         <?php if (get_field('first_screen_is_active', '11') == 'Active') { ?>
             <section class="header-content">
                 <div class="header-about">
@@ -20,13 +20,21 @@
                         $images = explode(',', get_field('additional_pictures_for_the_event', $key_upcoming_event)); ?>
                         <?php if ($images) : ?>
                             <?php foreach ($images as $image_id) : ?>
-                                <img class="header-slider-img" src="<?php echo wp_get_attachment_url($image_id) ?>" alt="<?php echo $image_id['title'] ?>" />
+                                <img class="header-slider-img" src="<?php echo wp_get_attachment_url($image_id) ?>" alt="<?php the_field('name_of_event', $key_upcoming_event) ?>" />
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </div>
                     <div class="slider-arrows">
-                        <div class="arrow-left"></div>
-                        <div class="arrow-right"></div>
+                        <div class="arrow-left arr-primary">
+                            <svg>
+                                <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-l"></use>
+                            </svg>
+                        </div>
+                        <div class="arrow-right arr-primary">
+                            <svg>
+                                <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-r"></use>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -57,9 +65,9 @@
         <?php $second_preference = get_field('second_preference', '11'); ?>
         <div class="popup grey-popup service-popup sittig-popup"><span class="close"> </span>
             <div>
-                <?php if (isset($second_preference['image_for_the_second_preference'])) { ?>
-                    <img src="<?php echo $second_preference['image_for_the_second_preference']['url'] ?>" alt="<?php echo $second_preference['the_name_of_the_second_preference'] ?>" />
-                <?php }; ?>
+                <svg>
+                    <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#printer"></use>
+                </svg>
             </div>
             <p class="service-popup-title"><?php echo $second_preference['the_name_of_the_second_preference'] ?></p>
             <p><?php echo $second_preference['brief_description_of_the_second_preference'] ?></p>
@@ -67,9 +75,9 @@
         <?php $third_preference = get_field('third_preference', '11'); ?>
         <div class="popup grey-popup service-popup wifi-popup"><span class="close"> </span>
             <div>
-                <?php if (isset($third_preference['image_for_the_third_preference'])) { ?>
-                    <img src="<?php echo $third_preference['image_for_the_third_preference']['url'] ?>" alt="<?php echo $third_preference['the_name_of_the_third_preference'] ?>" />
-                <?php }; ?>
+                <svg>
+                    <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#wifi"></use>
+                </svg>
             </div>
             <p class="service-popup-title"><?php echo $third_preference['the_name_of_the_third_preference'] ?></p>
             <p><?php echo $third_preference['brief_description_of_the_third_preference'] ?></p>
@@ -77,9 +85,9 @@
         <?php $fourth_preference = get_field('fourth_preference', '11'); ?>
         <div class="popup grey-popup service-popup print-popup"><span class="close"> </span>
             <div>
-                <?php if (isset($fourth_preference['image_for_the_fourth_preference'])) { ?>
-                    <img src="<?php echo $fourth_preference['image_for_the_fourth_preference']['url'] ?>" alt="<?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?>" />
-                <?php }; ?>
+                <svg>
+                    <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#printer"></use>
+                </svg>
             </div>
             <p class="service-popup-title"><?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?></p>
             <p><?php echo $fourth_preference['brief_description_of_the_fourth_preference'] ?></p>
@@ -87,9 +95,9 @@
         <?php $fifth_preference = get_field('fifth_preference', '11'); ?>
         <div class="popup grey-popup service-popup microwave-popup"><span class="close"> </span>
             <div>
-                <?php if (isset($fifth_preference['image_for_the_fifth_preference'])) { ?>
-                    <img src="<?php echo $fifth_preference['image_for_the_fifth_preference']['url'] ?>" alt="<?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?>" />
-                <?php }; ?>
+                <svg>
+                    <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#microwave"></use>
+                </svg>
             </div>
             <p class="service-popup-title"><?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?></p>
             <p><?php echo $fifth_preference['brief_description_of_the_fifth_preference'] ?></p>
@@ -121,56 +129,56 @@
 
                 <?php
                 if (get_field('event_is_active', '11') == 'Active') { ?>
-                    <div class="slider-arrows">
-                        <div class="arrow-left arrow-left-event"></div>
-                        <div class="arrow-right arrow-right-event"></div>
+
+                    <div class="slider-arrows event-arrows arr-black">
+                        <div class="arrow-left arrow-left-event"><svg>
+                                <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-l"></use>
+                            </svg></div>
+                        <div class="arrow-right arrow-right-event"><svg>
+                                <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-r"></use>
+                            </svg></div>
                     </div>
-                    <?php $count_events = $events = get_posts(array(
-                        'numberposts' => -1,
-                        'post_type'   => 'events',
-                        'suppress_filters' => true,
-                        'fields' => 'ids'
-                    ));
-                    $count = ceil(count($count_events) / 4);
-                    for ($i = 0; $i < $count; $i++) { ?>
-                        <div class="events-line">
-                            <?php
-                            $events = get_posts(array(
-                                'numberposts' => 4,
-                                'offset' => $i * 4,
-                                'category'    => 0,
-                                'orderby'     => 'date',
-                                'order'       => 'DESC',
-                                'include'     => array(),
-                                'exclude'     => array(),
-                                'meta_key'    => '',
-                                'meta_value'  => '',
-                                'post_type'   => 'events',
-                                'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-                            ));
-                            foreach ($events as $key => $event) {
-                                setup_postdata($event);
-                            ?>
-                                <figure class="event">
+                    <div class="events-line">
+                        <?php
+                        $events = get_posts(array(
+                            'numberposts' => -1,
+                            'category'    => 0,
+                            'orderby'     => 'date',
+                            'order'       => 'DESC',
+                            'include'     => array(),
+                            'exclude'     => array(),
+                            'meta_key'    => '',
+                            'meta_value'  => '',
+                            'post_type'   => 'events',
+                            'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+                        ));
+                        foreach ($events as $key => $event) {
+                            setup_postdata($event);
+                        ?>
+                            <figure class="event">
+                                <?php $d = get_field('date_event', $event->ID);
+                                $t = get_field('time_event', $event->ID);
+                                $date = date_create($d . ' ' . $t);
+                                $event_date = date_format($date, 'M j');
+                                $event_poster = get_field('event_poster', $event->ID); ?>
+                                <div class="event-wrap"> <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $event->ID); ?>" />
                                     <div class="event-info">
-                                        <?php $d = get_field('date_event', $event->ID);
-                                        $t = get_field('time_event', $event->ID);
-                                        $date = date_create($d . ' ' . $t);
-                                        $event_date = date_format($date, 'M j'); ?>
                                         <address><?php the_field('venue', $event->ID); ?></address><time><?php echo $event_date; ?></time>
                                     </div>
-                                    <?php $event_poster = get_field('event_poster', $event->ID); ?>
-                                    <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $event->ID); ?>" />
-                                    <figcaption>
-                                        <h3><?php the_field('name_of_event', $event->ID); ?></h3>
-                                        <p class="event-subtitle"><?php the_field('info_about_event', $event->ID); ?></p><a class="button transparent-button event-button" href="<?php echo get_permalink($event->ID); ?>">Read more </a>
-                                    </figcaption>
-                                </figure>
-                            <?php wp_reset_postdata();
-                            } ?>
-                        </div>
-                <?php }
-                } ?>
+                                </div>
+                                <figcaption>
+                                    <h3><?php the_field('name_of_event', $event->ID); ?></h3>
+                                    <p class="event-subtitle"><?php the_field('info_about_event', $event->ID); ?></p>
+                                    <a class="button transparent-button event-button" href="<?php echo get_permalink($event->ID); ?>">Read more </a>
+                                </figcaption>
+                            </figure>
+
+                        <?php wp_reset_postdata();
+                        } ?>
+                    </div>
+                <?php
+                }
+                ?>
             </section>
             <?php if (get_field('video_is_active', '11') == 'Active') { ?>
                 <section class="video">
@@ -249,23 +257,38 @@
             <?php if (get_field('preferences_is_active', '11') == 'Active') { ?>
                 <div class="services-line">
                     <?php $first_preference = get_field('first_preference', '11'); ?>
-                    <div class="service service-3d-printer"><img src="<?php echo $first_preference['image_for_the_first_preference']['url'] ?>" alt="<?php echo $first_preference['the_name_of_the_first_preference'] ?>" />
+                    <div class="service service-3d-printer">
+                        <svg>
+                            <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#3d"></use>
+                        </svg>
                         <p><?php echo $first_preference['the_name_of_the_first_preference'] ?></p>
                     </div>
                     <?php $second_preference = get_field('second_preference', '11'); ?>
-                    <div class="service service-sitting"><img src="<?php echo $second_preference['image_for_the_second_preference']['url'] ?>" alt="<?php echo $second_preference['the_name_of_the_second_preference'] ?>" />
+                    <div class="service service-sitting">
+                        <svg>
+                            <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#chair"></use>
+                        </svg>
                         <p><?php echo $second_preference['the_name_of_the_second_preference'] ?></p>
                     </div>
                     <?php $third_preference = get_field('third_preference', '11'); ?>
-                    <div class="service service-wifi"><img src="<?php echo $third_preference['image_for_the_third_preference']['url'] ?>" alt="<?php echo $third_preference['the_name_of_the_third_preference'] ?>" />
+                    <div class="service service-wifi">
+                        <svg>
+                            <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#wifi"></use>
+                        </svg>
                         <p><?php echo $third_preference['the_name_of_the_third_preference'] ?></p>
                     </div>
                     <?php $fourth_preference = get_field('fourth_preference', '11'); ?>
-                    <div class="service service-print"><img src="<?php echo $fourth_preference['image_for_the_fourth_preference']['url'] ?>" alt="<?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?>" />
+                    <div class="service service-print">
+                        <svg>
+                            <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#printer"></use>
+                        </svg>
                         <p><?php echo $fourth_preference['the_name_of_the_fourth_preference'] ?></p>
                     </div>
                     <?php $fifth_preference = get_field('fifth_preference', '11'); ?>
-                    <div class="service service-microwave"><img src="<?php echo $fifth_preference['image_for_the_fifth_preference']['url'] ?>" alt="<?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?>" />
+                    <div class="service service-microwave">
+                        <svg>
+                            <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#microwave"></use>
+                        </svg>
                         <p><?php echo $fifth_preference['the_name_of_the_fifth_preference'] ?></p>
                     </div>
                 </div>
