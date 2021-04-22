@@ -195,8 +195,12 @@
                 <section class="gallery">
                     <h2 class="title-mb"><?php the_field('photo_gallery_name') ?></h2>
                     <div class="slider-arrows">
-                        <div class="arrow-left arrow-left-gallery"></div>
-                        <div class="arrow-right arrow-right-gallery"></div>
+                        <div class="arrow-left arrow-left-gallery"><svg>
+                                <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-l"></use>
+                            </svg></div>
+                        <div class="arrow-right arrow-right-gallery"><svg>
+                                <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-r"></use>
+                            </svg></div>
                     </div>
                     <?php
                     $gallery = get_posts(array(
@@ -295,11 +299,19 @@
             <?php } ?>
         </div>
     </div>
-    <div class="slider-arrows slider-arrows-sp">
-        <div class="arrow-left arrow-left-sp"></div>
-        <div class="arrow-right arrow-right-sp"></div>
-    </div>
     <?php if (get_field('partners_is_active', '11') == 'Active') { ?>
+    <div class="slider-arrows arr-sec-primary slider-arrows-sp">
+        <div class="arrow-left arrow-left-sp">
+            <svg>
+                <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-l"></use>
+            </svg>
+        </div>
+        <div class="arrow-right arrow-right-sp">
+            <svg>
+                <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-r"></use>
+            </svg>
+        </div>
+    </div>
         <div class="sponsor-wrap">
             <div class="sponsor">
                 <?php
@@ -317,12 +329,23 @@
             <section class="shop">
                 <h2><?php the_field('the_name_of_the_shop', '11'); ?></h2>
                 <div class="shop-info">
-                    <div class="shop-cabinet"><span class="balance">0kr</span><button class="basket"> <img src="<?php echo get_template_directory_uri() ?>/assets/img/basket.png" alt="Basket" /></button></div>
+                    <div class="shop-cabinet">
+                        <span class="balance">0kr</span>
+                        <button class="basket">
+                            <svg>
+                                <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#basket"></use>
+                            </svg>
+                        </button>
+                    </div>
                     <form class="search" id="shop-search-form" action="index.php"><input id="shop-search" type="search" name="shop-search" placeholder="Search" /><label for="shop-search"></label><input class="search-submit" id="search-submit" type="submit" /><label for="search-submit"></label></form>
                 </div>
-                <div class="slider-arrows">
-                    <div class="arrow-left arrow-left-shop"></div>
-                    <div class="arrow-right arrow-right-shop"></div>
+                <div class="slider-arrows arr-sec-primary">
+                    <div class="arrow-left arrow-left-shop"><svg>
+                            <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-l"></use>
+                        </svg></div>
+                    <div class="arrow-right arrow-right-shop"><svg>
+                            <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-r"></use>
+                        </svg></div>
                 </div>
                 <div class="codyshop-ajax-search"></div>
                 <div class="shop-products search-hiden">
