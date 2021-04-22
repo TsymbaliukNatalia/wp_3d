@@ -7,7 +7,9 @@
                         <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#logo"></use>
                     </svg>
                 <?php } else {  ?>
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/logo_black.png" alt="Musikkbryggeriet3d logo" />
+                    <svg>
+                        <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#logo"></use>
+                    </svg>
                 <?php } ?>
             </a>
         </div>

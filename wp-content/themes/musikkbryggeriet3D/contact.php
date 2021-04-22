@@ -22,7 +22,10 @@ Template Name: Om oss
                         <?php the_field('text_with_information_about_us') ?>
                     </div>
                     <div class="slider contact-slider">
-                        <div class="arrow-left-contact js-arrow-left"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png" alt="arrow left" />
+                        <div class="arrow-left arrow-left-contact arr-primary js-arrow-left">
+                            <svg>
+                                <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-l"></use>
+                            </svg>
                         </div>
                         <div class="contact-img-line js-slider-line">
                             <?php
@@ -32,7 +35,11 @@ Template Name: Om oss
                                 <img class="js-slider-object" src="<?php echo wp_get_attachment_url($id); ?>" alt="<?php echo get_the_title($id); ?>" />
                             <?php } ?>
                         </div>
-                        <div class="arrow-right-contact js-arrow-right"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png" alt="arrow right" /></div>
+                        <div class="arrow-right arrow-right-contact arr-primary js-arrow-right">
+                            <svg>
+                                <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-r"></use>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </section>
