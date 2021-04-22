@@ -89,15 +89,16 @@ Template Name: Eventer
                     foreach ($events as $key => $event) {
                         setup_postdata($event); ?>
                         <figure class="event"><a class="product-link" href="<?php echo get_permalink($event->ID); ?>"></a>
-                            <div class="event-info">
-                                <?php $d = get_field('date_event', $event->ID);
-                                $t = get_field('time_event', $event->ID);
-                                $date = date_create($d . ' ' . $t);
-                                $event_date = date_format($date, 'M j'); ?>
-                                <address><?php the_field('venue', $event->ID); ?></address><time><?php echo $event_date; ?></time>
+                            <?php $d = get_field('date_event', $event->ID);
+                            $t = get_field('time_event', $event->ID);
+                            $date = date_create($d . ' ' . $t);
+                            $event_date = date_format($date, 'M j');
+                            $event_poster = get_field('event_poster', $event->ID); ?>
+                            <div class="event-wrap"> <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $event->ID); ?>" />
+                                <div class="event-info">
+                                    <address><?php the_field('venue', $event->ID); ?></address><time><?php echo $event_date; ?></time>
+                                </div>
                             </div>
-                            <?php $event_poster = get_field('event_poster', $event->ID); ?>
-                            <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event', $event->ID); ?>" />
                             <figcaption>
                                 <h3><?php the_field('name_of_event', $event->ID); ?></h3>
                                 <p class="event-subtitle"><?php the_field('info_about_event', $event->ID); ?></p>
@@ -107,8 +108,12 @@ Template Name: Eventer
                     } ?>
                 </div>
                 <div class="arrow-line">
-                    <div class="arrow-left-event"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png" alt="arrow left" /></div>
-                    <div class="arrow-right-event"><img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_black.png" alt="arrow right" /></div>
+                    <div class="arrow-left arrow-left-event arr-hov-white"><svg>
+                            <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-l"></use>
+                        </svg></div>
+                    <div class="arrow-right arrow-right-event arr-hov-white"><svg>
+                            <use xlink:href="<?php echo get_template_directory_uri() ?>/assets/img/sprite.svg#arr-r"></use>
+                        </svg></div>
                 </div>
             </section>
         </div>
