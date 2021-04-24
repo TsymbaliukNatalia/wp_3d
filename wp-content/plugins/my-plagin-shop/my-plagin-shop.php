@@ -4,6 +4,7 @@ Plugin Name: My Plagin Shop
 */
 
 include_once ('inc/mpsh-functions.php');
+include_once ('inc/mpsh-new-order.php');
 
 // Хук события 'wp_footer', добавляем функцию 'mfp_Add_Text' к нему
 add_action("wp_footer", "mfp_Add_Text");
