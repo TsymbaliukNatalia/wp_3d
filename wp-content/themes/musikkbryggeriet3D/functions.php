@@ -2,6 +2,7 @@
 
 include_once('inc/function-modules/register.php');
 include_once('inc/function-modules/search-functions.php');
+include_once('inc/function-modules/new-order.php');
 
 add_action('wp_enqueue_scripts', 'my_wp_head_css' );
 add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
@@ -17,7 +18,7 @@ function my_wp_head_css() {
 function my_scripts_method(){
 	wp_enqueue_script( 'header_script', get_template_directory_uri() . '/assets/js/header.js', array(), false, 'in_footer');
 	wp_enqueue_script( 'forms_script', get_template_directory_uri() . '/assets/js/forms.js', array('jquery'), false, 'in_footer');
-	wp_localize_script( 'forms_script', '_SERVER_DATA', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	wp_localize_script( 'forms_script', '_SERVER_DATA', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
 	if(is_page(11)){
 		wp_enqueue_script( 'basket_script', get_template_directory_uri() . '/assets/js/basket.js', array(), false, 'in_footer');
 		wp_enqueue_script( 'scripts_script', get_template_directory_uri() . '/assets/js/scripts.js', array(), false, 'in_footer');
@@ -129,3 +130,15 @@ function register_post_types(){
 function theme_register_nav_menu() {
 	register_nav_menu( 'primary', 'Primary Menu' );
 }
+
+add_action( 'admin_menu', function ()
+{
+ add_menu_page(
+ 'Orders', // Название страниц (Title)
+ 'Orders', // Текст ссылки в меню
+ 'manage_options', // Требование к возможности видеть ссылку
+ 'my-plagin-shop/inc/mpsh-orders-page.php', // 'slug' - файл отобразится по нажатию на ссылку
+ null,
+ '',
+ 27);
+});
