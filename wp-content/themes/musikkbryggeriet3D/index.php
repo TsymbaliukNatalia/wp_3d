@@ -108,11 +108,14 @@
             </div>
             <form class="order-registration">
                 <p class="all-price">To pay <span class="sum-price">0$</span></p>
-                <p class="mini-inputs input-line"><label for="pr-first-name"><input id="pr-first-name" type="text" name="pr-first-name" placeholder="First name" /></label><label for="pr-last-name"><input id="pr-last-name" type="text" name="pr-last-name" placeholder="Last name" /></label></p>
-                <p class="input-line"> <label for="pr-email"><input id="pr-email" type="email" name="pr-email" placeholder="E-mail" /></label></p>
-                <p class="input-line"><label for="pr-tel"><input id="pr-tel" type="tel" name="pr-tel" placeholder="Phone number" /></label></p>
-                <p class="input-line"> <label for="pr-city"><input id="pr-city" type="text" name="city" placeholder="City" /></label></p><label class="pr-submit" for="pr-submit"><input type="submit" value="Confirm the order" /></label>
+                <p class="mini-inputs input-line"><label for="pr-first-name"><input id="pr-first-name" type="text" name="pr-first-name" placeholder="First name" required/></label><label for="pr-last-name"><input id="pr-last-name" type="text" name="pr-last-name" placeholder="Last name"  required/></label></p>
+                <p class="input-line"> <label for="pr-email"><input id="pr-email" type="email" name="pr-email" placeholder="E-mail"  required/></label></p>
+                <p class="input-line"><label for="pr-tel"><input id="pr-tel" type="tel" name="pr-tel" placeholder="Phone number"  required/></label></p>
+                <p class="input-line"> <label for="pr-city"><input id="pr-city" type="text" name="city" placeholder="City"  required/></label></p><label class="pr-submit" for="pr-submit"><input type="submit" id="confirm_order" name="confirm_order" value="Confirm the order" /></label>
             </form>
+        </div>
+        <div class="popup grey-popup order-thanks"><span class="close"> </span>
+            test
         </div>
     </div>
     <div class="bg-orange">
@@ -367,7 +370,8 @@
                         $product_img = get_field('main_photo_product', $product->ID);
                     ?>
                         <figure class="shop-product"> <a class="product-link" href="<?php echo get_permalink($product->ID); ?>"></a>
-                            <div class="product-img-wrap"><img src="<?php echo $product_img['url'] ?>" alt="<?php the_field('name_of_product', $product->ID); ?>" /></div><a class="button transparent-button product-button" href="#">Donate</a>
+                            <div class="product-img-wrap"><img src="<?php echo $product_img['url'] ?>" alt="<?php the_field('name_of_product', $product->ID); ?>" /></div>
+                            <a class="button transparent-button product-button" data-id="<?php echo $product->ID; ?>" href="#">Donate</a>
                             <figcaption>
                                 <div class="bg-orange">
                                     <h4 class="product-name"><?php the_field('name_of_product', $product->ID); ?></h4><span class="price"><?php the_field('product_price', $product->ID); ?>kr </span>

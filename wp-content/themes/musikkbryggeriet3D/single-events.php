@@ -88,6 +88,7 @@ Template Name: Eventer
                     ));
                     foreach ($events as $key => $event) {
                         setup_postdata($event); ?>
+                        <a class="event-slide" href="<?php echo get_permalink($event->ID); ?>">
                         <figure class="event">
                             <?php $d = get_field('date_event', $event->ID);
                             $t = get_field('time_event', $event->ID);
@@ -104,6 +105,7 @@ Template Name: Eventer
                                 <p class="event-subtitle"><?php the_field('info_about_event', $event->ID); ?></p>
                             </figcaption>
                         </figure>
+                        </a>
                     <?php wp_reset_postdata();
                     } ?>
                 </div>
