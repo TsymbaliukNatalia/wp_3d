@@ -131,14 +131,18 @@ function theme_register_nav_menu() {
 	register_nav_menu( 'primary', 'Primary Menu' );
 }
 
-add_action( 'admin_menu', function ()
-{
- add_menu_page(
- 'Orders', // Название страниц (Title)
- 'Orders', // Текст ссылки в меню
- 'manage_options', // Требование к возможности видеть ссылку
- 'my-plagin-shop/inc/mpsh-orders-page.php', // 'slug' - файл отобразится по нажатию на ссылку
- null,
- '',
- 27);
-});
+// add_action( 'admin_menu', function ()
+// {
+//  add_menu_page(
+//  'Orders', // Название страниц (Title)
+//  'Orders', // Текст ссылки в меню
+//  'manage_options', // Требование к возможности видеть ссылку
+// 'test()',
+// //  '../wp-content/themes/musikkbryggeriet3D/inc/function-modules/mpsh-orders-page.php', // 'slug' - файл отобразится по нажатию на ссылку
+//  null,
+//  '',
+//  27);
+// });
+// function test(){
+// 	echo 'hello';
+// }

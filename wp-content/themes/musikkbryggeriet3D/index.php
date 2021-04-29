@@ -106,7 +106,7 @@
             <div class="basket-products">
                 <p class="basket-clear">Basket is clear</p>
             </div>
-            <form class="order-registration">
+            <form class="order-registration" method="post">
                 <p class="all-price">To pay <span class="sum-price">0$</span></p>
                 <p class="mini-inputs input-line"><label for="pr-first-name"><input id="pr-first-name" type="text" name="pr-first-name" placeholder="First name" required/></label><label for="pr-last-name"><input id="pr-last-name" type="text" name="pr-last-name" placeholder="Last name"  required/></label></p>
                 <p class="input-line"> <label for="pr-email"><input id="pr-email" type="email" name="pr-email" placeholder="E-mail"  required/></label></p>

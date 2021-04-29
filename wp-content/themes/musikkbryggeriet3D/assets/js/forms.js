@@ -120,7 +120,7 @@ jQuery(document).ready(function($){
 
     $('#confirm_order').click(function(eventObject){
         
-        let orderInfo = {};
+        let orderInfo = [];
         let firstName = $('.order-registration').find('#pr-first-name').val();
         let lastName = $('.order-registration').find('#pr-last-name').val();
         let email = $('.order-registration').find('#pr-email').val();
@@ -128,53 +128,40 @@ jQuery(document).ready(function($){
         let city = $('.order-registration').find('#pr-city').val();
 
         if(firstName.length > 0 && lastName.length > 0 && email.length > 0 && phoneNumber.length > 0 && city.length > 0){
+
+            // $('#confirm_order').prop("disabled",true);
             
-            orderInfo['customer'] = {};
-            orderInfo['customer']['firstName'] = firstName;
-            orderInfo['customer']['lastName'] = lastName;
-            orderInfo['customer']['email'] = email;
-            orderInfo['customer']['phoneNumber'] = phoneNumber;
-            orderInfo['customer']['city'] = city;
+            orderInfo[0] = [];
+            orderInfo[0].push(firstName);
+            orderInfo[0].push(lastName);
+            orderInfo[0].push(email);
+            orderInfo[0].push(phoneNumber);
+            orderInfo[0].push(city);
 
-            let sumPrice = $('.order-registration').find('.sum-price').text();
-            orderInfo['sumPrice'] = sumPrice.replace(/\D+/g,"");
-
-            orderInfo['products'] = {};
-            orderInfo['products'] = $('.basket-products');
+            orderInfo[1] = [];
+            
             $('.product-for-js').each(function(index, element) {
                 idProduct = element.dataset.id;
                 quantityProduct = element.querySelector('.product-amount').value;
                 priceProduct = element.querySelector('.product-price').dataset.productPrice;
-                orderInfo['products'][index] = {};
-                orderInfo['products'][index]['id'] = idProduct;
-                orderInfo['products'][index]['quantity'] = quantityProduct;
-                orderInfo['products'][index]['price'] = priceProduct.replace(/\D+/g,"");
+                orderInfo[1][index] = [];
+                orderInfo[1][index].push(idProduct);
+                orderInfo[1][index].push(quantityProduct);
+                orderInfo[1][index].push(priceProduct.replace(/\D+/g,""));
             });
-
+            
             let json = JSON.stringify(orderInfo);
-
-            // let searchTerm = "hello";
-                // console.log(searchTerm);
-                $.ajax({
-                    url : window._SERVER_DATA.ajaxurl + '?action=ajax_create_order',
-                    type: 'POST',
-                    data:{
-                        data  :json
-                    },
-                    success:function(result){
-                        console.log(result);
-                        // $('.codyshop-ajax-search').fadeIn().html(result);
-                        closePopup();
-                    }
-                });
-            
-            // $('.order-thanks').css('display', 'block');
-            // $('.order-thanks').text('Bestillingen din er akseptert! Takk for ditt kjøp!');
-            // var json = {"data":orderInfo};
-            // let order_info = JSON.stringify(orderInfo);
-            // console.log(json);
-            
-
+           
+            $.ajax({
+                url : window._SERVER_DATA.ajaxurl + '?action=ajax_create_order',
+                type: 'POST',
+                data: {
+                    data: orderInfo,},
+                success:function(result){
+                    console.log(result);
+                    closePopup();
+                }
+            });   
         }
     });
 

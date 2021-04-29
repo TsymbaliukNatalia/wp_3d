@@ -1,6 +1,6 @@
 <?php
 
-require_once ABSPATH . WPINC .'/registration.php';
+// require_once ABSPATH . WPINC .'/registration.php';
 
 function create_order_table() {
 	global $wpdb;
@@ -18,6 +18,7 @@ function create_order_table() {
     phone_number varchar(255) NOT NULL default '',
     city varchar(255) NOT NULL default '',
 	to_pay int(20) NOT NULL default 0,
+	created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	revised int(1) NOT NULL default 0,
 	PRIMARY KEY  (id)
 	)
@@ -60,9 +61,46 @@ if (wp_doing_ajax()) {
 
 function ajax_create_order()
 {
-    $user_id = $_POST['data'];
-    echo json_encode($user_id);
+	global $wpdb;
+	$data = $_POST['data'];
+	$customer = $_POST['data'][0];
+	$orders = $_POST['data'][1];
+	$pay_sum = 0;
 
-    wp_die();  
+	foreach ($orders as $order) {
+		$pay_sum += $order[2];
+	}
+	
+
+	if(isset($customer) && isset($pay_sum) && isset($orders)){
+		$res1 = $wpdb->insert( 'wp_order', [
+			'first_name' => $customer[0],
+			'last_name' => $customer[1],
+			'email' => $customer[2],
+			'phone_number' => $customer[3],
+			'city' => $customer[4],
+			'to_pay' => $pay_sum 
+			] );
+		$last_insert_id = $wpdb->insert_id;
+		$res2 = true;
+		foreach ($orders as $order) {
+			$res3 = $wpdb->insert( 'wp_order_product', [
+				'id_order' => $last_insert_id,
+				'id_product' => $order[0],
+				'quantity' => $order[1],
+				'cost' => $order[2]
+			]);
+			if($res3 != true){
+				$res2 = false;
+			}
+		}
+	};
+	if($res1 && $res2){
+		echo json_encode($res1);
+		wp_die(); 
+	} else {
+		echo json_encode(false);
+		wp_die();
+	}
 }
     
