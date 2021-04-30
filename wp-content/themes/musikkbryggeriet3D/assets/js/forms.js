@@ -158,6 +158,9 @@ jQuery(document).ready(function($){
                 data: {
                     data: orderInfo,},
                 success:function(result){
+                    if(result !== 0){
+                        console.log('ok');
+                    }
                     console.log(result);
                     closePopup();
                 }
