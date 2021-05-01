@@ -39,6 +39,8 @@ class Orders_List extends WP_List_Table
         if (!empty($_REQUEST['orderby'])) {
             $sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
             $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
+        } else {
+            $sql .= ' ORDER BY id DESC';
         }
 
         $sql .= " LIMIT $per_page";
@@ -202,9 +204,9 @@ class Orders_List extends WP_List_Table
             'delete' => "<a href='#' class='delete_order' data-id=" . $item['id'] . ">Delete</a>"
         );
         if ($item['revised'] == 0) {
-            $action['show'] = "<a href='#' class='show_order' data-revised='0' data-id=" . $item['id'] . ">Show new order</a>";
+            $action['show'] = "<a  href='options-general.php?page=show-order&&id=" . $item['id'] . "' class='show_order' data-revised='0' data-id=" . $item['id'] . ">Show new order</a>";
         } else {
-            $action['show'] = "<a href='#' class='show_order' data-id=" . $item['id'] . ">Show order</a>";
+            $action['show'] = "<a href='options-general.php?page=show-order&&id=" . $item['id'] . "' class='show_order' data-id=" . $item['id'] . ">Show order</a>";
         }
         return sprintf('%1$s %2$s', $item['id'], $this->row_actions($action));
     }
@@ -323,7 +325,7 @@ class SP_Plugin
             'Orders',
             'Orders',
             'manage_options',
-            'wp_list_table_class',
+            'orders',
             [$this, 'plugin_settings_page']
         );
 

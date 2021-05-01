@@ -159,9 +159,9 @@ jQuery(document).ready(function($){
                     data: orderInfo,},
                 success:function(result){
                     if(result !== 0){
-                        console.log('ok');
+                        // console.log('ok');
                     }
-                    console.log(result);
+                    //    
                     closePopup();
                 }
             });   

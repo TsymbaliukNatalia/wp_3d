@@ -10,7 +10,7 @@
                         <h1><?php the_field('name_of_event', $key_upcoming_event) ?></h1>
                         <!-- <p class="header-subtitle"><?php the_field('venue', $key_upcoming_event) ?></p> -->
                         <p class="header-subtitle"><?php the_field('info_about_event', $key_upcoming_event) ?></p>
-                    </div><a class="button" href="<?php echo get_permalink($key_upcoming_event); ?>">Read more</a>
+                    </div><a class="button" href="<?php echo get_permalink($key_upcoming_event); ?>">Les mer</a>
                 </div>
                 <div class="header-slider">
                     <div class="photos">
@@ -126,7 +126,7 @@
                     <div class="section-content">
                         <h2><?php the_field('about_us_title', '11') ?></h2>
                         <p class="subtitle"><?php the_field('about_us_text', '11') ?>
-                        </p><a class="button transparent-button" href="<?php echo home_url(); ?>/contact">Read more</a>
+                        </p><a class="button transparent-button" href="<?php echo home_url(); ?>/contact">Les mer</a>
                     </div>
                 <?php }; ?>
 
@@ -172,7 +172,7 @@
                                 <figcaption>
                                     <h3><?php the_field('name_of_event', $event->ID); ?></h3>
                                     <p class="event-subtitle"><?php the_field('info_about_event', $event->ID); ?></p>
-                                    <a class="button transparent-button event-button" href="<?php echo get_permalink($event->ID); ?>">Read more </a>
+                                    <a class="button transparent-button event-button" href="<?php echo get_permalink($event->ID); ?>">Les mer </a>
                                 </figcaption>
                             </figure>
 
@@ -340,7 +340,7 @@
                             </svg>
                         </button>
                     </div>
-                    <form class="search" id="shop-search-form" action="index.php"><input id="shop-search" type="search" name="shop-search" placeholder="Search" /><label for="shop-search"></label><input class="search-submit" id="search-submit" type="submit" /><label for="search-submit"></label></form>
+                    <form class="search" id="shop-search-form" action="index.php"><input id="shop-search" type="search" name="shop-search" placeholder="Søk" /><label for="shop-search"></label><input class="search-submit" id="search-submit" type="submit" /><label for="search-submit"></label></form>
                 </div>
                 <div class="slider-arrows arr-sec-primary">
                     <div class="arrow-left arrow-left-shop"><svg>
@@ -371,7 +371,7 @@
                     ?>
                         <figure class="shop-product"> <a class="product-link" href="<?php echo get_permalink($product->ID); ?>"></a>
                             <div class="product-img-wrap"><img src="<?php echo $product_img['url'] ?>" alt="<?php the_field('name_of_product', $product->ID); ?>" /></div>
-                            <a class="button transparent-button product-button" data-id="<?php echo $product->ID; ?>" href="#">Donate</a>
+                            <a class="button transparent-button product-button" data-id="<?php echo $product->ID; ?>" href="#">Donere</a>
                             <figcaption>
                                 <div class="bg-orange">
                                     <h4 class="product-name"><?php the_field('name_of_product', $product->ID); ?></h4><span class="price"><?php the_field('product_price', $product->ID); ?>kr </span>

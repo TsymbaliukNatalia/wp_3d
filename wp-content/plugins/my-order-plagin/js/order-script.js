@@ -63,26 +63,8 @@ jQuery(document).ready(function($){
     
     });
 
-    // $('.delete_order').on('click', function(e){
-    //     e.preventDefault();
-    //     let delete_id = e.target.getAttribute('data-id');
-    //     let delete_row = e.target.closest('tr');
-    //     $('#popup-delete-order').css('display', 'block');
-       
-    //     $('#delete-order-no').on('click', function(e){
-    //         $('#popup-delete-order').css('display', 'none');
-    //     });
-    //     $('#delete-order-yes').on('click', function(e){
-    //         $('#popup-delete-order').css('display', 'none');
-    //         $.ajax({
-    //             url : ajaxurl + '?action=ajax_admin_delete_order',
-    //             type: 'POST',
-    //             data: {
-    //                 data: delete_id,},
-    //             success:function(result){
-    //                 delete_row.remove();
-    //             }
-    //         });  
-    //     });
-    // });
+    $('.show').on('click', function(e){
+        location.reload();
+    });
+    
 });

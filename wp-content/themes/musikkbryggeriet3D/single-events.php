@@ -13,14 +13,7 @@ Template Name: Eventer
     </header>
     <main>
         <div class="popup-bg">
-            <form class="registr-popup popup"><span class="close"> </span>
-                <p class="popup-title">HVA KAN VI HJELPE DEG MED?</p>
-                <p class="mini-inputs"><label for="registr-name"><input id="registr-name" type="text" name="registr-name" placeholder="Fornavn" /></label><label for="registr-surname"><input id="registr-surname" type="text" name="registr-surname" placeholder="Etternavn" /></label>
-                </p>
-                <p class="mini-inputs"><label for="registr-tif"><input id="registr-tif" type="text" name="registr-tif" placeholder="Tif.nr." /></label><label for="registr-mail"><input id="registr-mail" type="email" name="registr-mail" placeholder="E-post" /></label></p>
-                <p class="input-line"> <label class="request"><textarea id="request" name="request" cols="30" rows="10" placeholder="Scriv inn din henvendelse her..."></textarea></label></p>
-                <p class="input-line registr-submit-line"> <label for="registr-submit"><input class="button" id="registr-submit" type="submit" value="Send inn" /></label></p>
-            </form>
+            <?php echo do_shortcode( '[contact-form-7 id="295" html_class="registr-popup popup" title="Contact form register"]' ); ?>
             <?php include_once('register-template.php'); ?>
         </div>
         <!-- <hr class="primary-line" /> -->
@@ -69,8 +62,8 @@ Template Name: Eventer
         <!-- <hr class="primary-line" /> -->
         <div class="wrapper">
             <section class="more-event">
-                <h2>MORE EVENT</h2>
-                <form class="search" id="event-search-form"> <input id="event-search" type="search" name="shop-search" placeholder="Search" /><label for="shop-search"></label><input class="search-submit" id="event-search" type="submit" /><label for="search-submit"></label></form>
+                <h2>MER EVENT</h2>
+                <form class="search" id="event-search-form"> <input id="event-search" type="search" name="shop-search" placeholder="Søk" /><label for="shop-search"></label><input class="search-submit" id="event-search" type="submit" /><label for="search-submit"></label></form>
                 <div class="codyshop-ajax-search"></div>
                 <div class="events-line search-hiden">
                     <?php
