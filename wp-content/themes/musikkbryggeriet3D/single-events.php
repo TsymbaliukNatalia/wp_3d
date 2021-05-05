@@ -29,7 +29,7 @@ Template Name: Eventer
                     <div class="text-description">
                         <h2><?php the_field('name_of_event', $id_event) ?></h2>
                         <?php the_field('detailed_information_about_the_event', $id_event); ?>
-                        <a class="button transparent-button registr" href="#">Registreringen</a></p>
+                        <a class="button transparent-button registr" id="register-event" href="#">Registreringen</a></p>
                     </div>
                     <div class="slider event-slider">
                         <div class="event-img-line">

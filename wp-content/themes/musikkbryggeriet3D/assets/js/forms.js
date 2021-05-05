@@ -165,6 +165,12 @@ jQuery(document).ready(function($){
         }
     });
 
+    // add a hidden field with the name of the event in the registration form
+    $('#register-event').on('click', function(e){
+        let eventName = $('.text-description h2').text();
+        $('#event-name').attr('value', eventName);
+    });
+
     
 
 });
