@@ -32,7 +32,7 @@ function shop_ajax_search()
             <?php while ($query->have_posts()) {
                 $query->the_post();
                 $product_img = get_field('main_photo_product'); ?>
-                <figure class="shop-product"> <a class="product-link" href="<?php echo get_permalink(); ?>"></a>
+                <figure class="shop-product">
                     <div class="product-img-wrap"><img src="<?php echo $product_img['url'] ?>" alt="<?php the_field('name_of_product'); ?>" /></div><a class="button transparent-button product-button" href="#">Donate</a>
                     <figcaption>
                         <div class="bg-orange">

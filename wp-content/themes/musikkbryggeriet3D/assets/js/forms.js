@@ -97,7 +97,6 @@ jQuery(document).ready(function($){
     $('#event-search').change(function(eventObject){
         
         var searchTerm = $(this).val();
-        // if(searchTerm.length > 2){
             $(".search-hiden").css("display", "none");
 			$.ajax({
 				url : window._SERVER_DATA.ajaxurl + '?action=event_ajax_search',
@@ -106,12 +105,9 @@ jQuery(document).ready(function($){
 					'term'  :searchTerm
 				},
 				success:function(result){
-                    // console.log(result);
 					$('.codyshop-ajax-search').fadeIn().html(result);
 				}
             });
-        // }
-        
     });
 
     $('.order-registration').on('submit', function(e){
@@ -128,8 +124,6 @@ jQuery(document).ready(function($){
         let city = $('.order-registration').find('#pr-city').val();
 
         if(firstName.length > 0 && lastName.length > 0 && email.length > 0 && phoneNumber.length > 0 && city.length > 0){
-
-            // $('#confirm_order').prop("disabled",true);
             
             orderInfo[0] = [];
             orderInfo[0].push(firstName);
@@ -161,12 +155,9 @@ jQuery(document).ready(function($){
                     $('.basket-popup').html('<span class="close"> </span><b class="your-order">Takk for din bestilling!</b>');
                     $('.close').on('click', function(){
                         closePopup();
-                        localStorage.clear();
-                        $('.balance').text('0kr');
                     });
-                   
-                    // closePopup();
-                    // $('#order-thank').show();
+                    localStorage.clear();
+                    $('.balance').text('0kr');
                 }
             });   
         }
@@ -177,7 +168,4 @@ jQuery(document).ready(function($){
         let eventName = $('.text-description h2').text();
         $('#event-name').attr('value', eventName);
     });
-
-    
-
 });
