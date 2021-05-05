@@ -51,7 +51,7 @@ function render_show_order_page()
                 $product_img = get_field('main_photo_product', $product['id_product']);
                 ?>
                 <tr>
-                    <td><?php echo $product['id_order']; ?></td>
+                    <td><?php echo $product['id_product']; ?></td>
                     <td><img src="<?php echo $product_img['url'] ?>" alt="<?php the_field('name_of_product', $product['id_product']); ?>" width="100%"/></td>
                     <td><?php the_field('name_of_product', $product['id_product'] )?></td>
                     <td><?php echo $product['quantity']; ?></td>
