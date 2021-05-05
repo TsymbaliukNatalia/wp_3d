@@ -80,22 +80,6 @@ function event_ajax_search()
         <div class="events-line">
             <?php while ($query->have_posts()) {
                 $query->the_post(); ?>
-                <!-- <figure class="event"><a class="product-link" href="<?php echo get_permalink(); ?>"></a>
-                    <div class="event-info">
-                        <?php $d = get_field('date_event');
-                        $t = get_field('time_event');
-                        $date = date_create($d . ' ' . $t);
-                        $event_date = date_format($date, 'M j'); ?>
-                        <address><?php the_field('venue'); ?></address><time><?php echo $event_date; ?></time>
-                    </div>
-                    <?php $event_poster = get_field('event_poster'); ?>
-                    <img src="<?php echo $event_poster["url"]; ?>" alt="<?php the_field('name_of_event'); ?>" />
-                    <figcaption>
-                        <h3><?php the_field('name_of_event'); ?></h3>
-                        <p class="event-subtitle"><?php the_field('info_about_event'); ?></p>
-                    </figcaption>
-                </figure> -->
-
                 <a class="event-slide" href="<?php echo get_permalink(); ?>">
                     <figure class="event">
                         <?php $d = get_field('date_event');

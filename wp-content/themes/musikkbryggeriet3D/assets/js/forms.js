@@ -97,7 +97,7 @@ jQuery(document).ready(function($){
     $('#event-search').change(function(eventObject){
         
         var searchTerm = $(this).val();
-        if(searchTerm.length > 2){
+        // if(searchTerm.length > 2){
             $(".search-hiden").css("display", "none");
 			$.ajax({
 				url : window._SERVER_DATA.ajaxurl + '?action=event_ajax_search',
@@ -110,7 +110,7 @@ jQuery(document).ready(function($){
 					$('.codyshop-ajax-search').fadeIn().html(result);
 				}
             });
-        }
+        // }
         
     });
 
