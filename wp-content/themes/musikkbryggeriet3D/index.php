@@ -369,7 +369,7 @@
                         setup_postdata($product);
                         $product_img = get_field('main_photo_product', $product->ID);
                     ?>
-                        <figure class="shop-product"> <a class="product-link" href="<?php echo get_permalink($product->ID); ?>"></a>
+                        <figure class="shop-product">
                             <div class="product-img-wrap"><img src="<?php echo $product_img['url'] ?>" alt="<?php the_field('name_of_product', $product->ID); ?>" /></div>
                             <a class="button transparent-button product-button" data-id="<?php echo $product->ID; ?>" href="#">Donere</a>
                             <figcaption>
