@@ -114,9 +114,6 @@
                 <p class="input-line"> <label for="pr-city"><input id="pr-city" type="text" name="city" placeholder="City"  required/></label></p><label class="pr-submit" for="pr-submit"><input type="submit" id="confirm_order" name="confirm_order" value="Confirm the order" /></label>
             </form>
         </div>
-        <div class="popup grey-popup order-thanks"><span class="close"> </span>
-            test
-        </div>
     </div>
     <div class="bg-orange">
         <div class="wrapper">

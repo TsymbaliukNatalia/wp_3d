@@ -158,8 +158,15 @@ jQuery(document).ready(function($){
                 data: {
                     data: orderInfo,},
                 success:function(result){
-                      
-                    closePopup();
+                    $('.basket-popup').html('<span class="close"> </span><b class="your-order">Takk for din bestilling!</b>');
+                    $('.close').on('click', function(){
+                        closePopup();
+                        localStorage.clear();
+                        $('.balance').text('0kr');
+                    });
+                   
+                    // closePopup();
+                    // $('#order-thank').show();
                 }
             });   
         }
