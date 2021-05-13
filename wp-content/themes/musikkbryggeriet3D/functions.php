@@ -166,3 +166,10 @@ function theme_register_nav_menu()
 add_action('admin_enqueue_scripts', function(){
 	wp_enqueue_style('admin-styles', get_stylesheet_directory_uri() . '/assets/css/admin.css');
 });
+
+function wphelp_custom_pre_get_posts($query)
+{
+	if ($query->is_main_query() && !$query->is_feed() && !is_admin() && is_category()) {
+		$query->set('paged', str_replace('/', '', get_query_var('page')));
+	}
+}

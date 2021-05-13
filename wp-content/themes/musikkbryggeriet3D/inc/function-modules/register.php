@@ -8,6 +8,7 @@ if (wp_doing_ajax()) {
     add_action('wp_ajax_nopriv_login', 'wp_3d_login');
     add_action('wp_ajax_recover_password', 'wp_3d_recover_password');
     add_action('wp_ajax_nopriv_recover_password', 'wp_3d_recover_password');
+    add_action('wp_ajax_logout', 'wp_3d_logout');
 };
 
 function wp_3d_register()
@@ -80,4 +81,13 @@ function wp_3d_recover_password()
         echo json_encode($response);
         wp_die();
     }
+}
+
+function wp_3d_logout(){
+    $logout_data = $_POST["logOut"];
+    if($logout_data == 'true'){
+        wp_logout();
+        echo json_encode($logout_data);
+    }
+    wp_die();
 }

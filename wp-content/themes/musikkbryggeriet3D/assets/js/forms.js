@@ -42,6 +42,9 @@ jQuery(document).ready(function($){
             } else {
                 $loginUpErrors.empty();
                 closePopup();
+                if($('.no-register-video')){
+                    location.reload();
+                }
             }
         }, 'json');
     });
@@ -167,5 +170,23 @@ jQuery(document).ready(function($){
     $('#register-event').on('click', function(e){
         let eventName = $('.text-description h2').text();
         $('#event-name').attr('value', eventName);
+    });
+
+    // log-out
+    $('.log-out-button').on('click', function(e){
+        var logOut = 'true';
+        $.ajax({
+            url : window._SERVER_DATA.ajaxurl + '?action=logout',
+            type: 'POST',
+            data:{
+                'logOut'  : logOut
+            },
+            success:function(result){
+                if(result){
+                    location.reload();
+                }
+                console.log(result);
+            }
+        });
     });
 });

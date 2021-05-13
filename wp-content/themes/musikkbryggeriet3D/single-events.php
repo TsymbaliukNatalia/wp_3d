@@ -14,7 +14,7 @@ Template Name: Eventer
     <main>
         <div class="popup-bg">
             <?php echo do_shortcode( '[contact-form-7 id="295" html_class="registr-popup popup" title="Contact form register"]' ); ?>
-            <?php include_once('register-template.php'); ?>
+            <?php include_once('templates/register-template.php'); ?>
         </div>
         <!-- <hr class="primary-line" /> -->
         <div class="wrapper">

@@ -13,7 +13,7 @@ Template Name: Om oss
         </div>
     </header>
     <main>
-        <div class="popup-bg"><?php include_once('register-template.php'); ?></div>
+        <div class="popup-bg"><?php include_once('templates/register-template.php'); ?></div>
         <div class="wrapper">
             <section class="about-us">
                 <h2><?php the_field('headline_for_information_about_us') ?></h2>
