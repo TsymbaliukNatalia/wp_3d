@@ -223,7 +223,7 @@
                                 <div class="big-photo scrolled-picture"><img src="<?php echo $photo_in_gallery["url"]; ?>" alt="<?php $photo_in_gallery['title']; ?>" />
                                     <div class="img-hover">
                                         <div class="text">
-                                            <?php get_field('description', $photo->ID) ?>
+                                            <?php echo get_field('description', $photo->ID) ?>
                                         </div><a class="more" href="<?php get_field('photo_instagram_link', $photo->ID) ?>">mer</a>
                                     </div>
                                 </div>
@@ -233,7 +233,7 @@
                                         <div class="small-photo scrolled-picture"><img src="<?php echo $photo_in_gallery["url"]; ?>" alt="<?php $photo_in_gallery['title']; ?>" />
                                             <div class="img-hover">
                                                 <div class="text">
-                                                    <?php get_field('description', $gallery[$key + 1]->ID) ?>
+                                                    <?php echo get_field('description', $gallery[$key + 1]->ID) ?>
                                                 </div><a class="more" href="<?php get_field('photo_instagram_link', $gallery[$key + 1]->ID) ?>">mer</a>
                                             </div>
                                         </div>
@@ -243,7 +243,7 @@
                                         <div class="small-photo scrolled-picture"><img src="<?php echo $photo_in_gallery["url"]; ?>" alt="<?php $photo_in_gallery['title']; ?>" />
                                             <div class="img-hover">
                                                 <div class="text">
-                                                    <?php get_field('description', $gallery[$key + 2]->ID) ?>
+                                                    <?php echo get_field('description', $gallery[$key + 2]->ID) ?>
                                                 </div><a class="more" href="<?php get_field('photo_instagram_link', $gallery[$key + 2]->ID) ?>">mer</a>
                                             </div>
                                         </div>

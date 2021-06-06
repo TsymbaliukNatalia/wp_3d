@@ -10,7 +10,6 @@
     color: red;
 }
 .page-numbers{
-    border: 1px solid grey;
     text-decoration: none;
     padding: 10px 10px;
     margin: 0 3px;
@@ -21,11 +20,12 @@
 .prev,
 .next{
     cursor: pointer;
-    border: none;
     background-color: rgba(33,33,33,0);
+
 }
 .prev svg,
 .next svg {
+    vertical-align: middle;
     width: 24px;
     height: 24px;
 }
